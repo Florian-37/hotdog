@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>University of Manila | Computer Science Department</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .lbc{text-align:center}
+.lbcap{margin-top:14px;color:#fff;font-weight:600;font-size:1.05rem}
+/* ---------- COLORS: neutral dark base, red + green used only as glowing accents ---------- */
+:root{--red:#ff3b47;--green:#1fd66b;--gold:#ffd60a;--glass:rgba(255,255,255,.09);--glass2:rgba(255,255,255,.16);--line:rgba(255,255,255,.24);--txt:#ffffff;--mut:#e3f2e8;--r:24px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--txt);background:#050505;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.nav a,.btn{font-family:Sora,Inter,system-ui,sans-serif}
+section{scroll-margin-top:100px;position:relative}
+.wrap{max-width:1160px;margin:auto;padding:100px 22px}
+h2{text-align:center;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.03em;font-weight:800}
+h2 em{font-style:normal;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:640px;margin:12px auto 44px;text-align:center}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* ---------- BLURRED UNIVERSITY BACKGROUND (fixed behind everything) ---------- */
+.bg{position:fixed;inset:-40px;z-index:-2;
+  /* REPLACE: um-campus.jpg = your university photo. If missing, the gradients below show. */
+  background:url('um-campus.jpg') center/cover,radial-gradient(55% 45% at 12% 12%,#e0303c77,transparent),radial-gradient(50% 40% at 92% 28%,#ffd60a44,transparent),radial-gradient(60% 50% at 80% 88%,#1fd66b99,transparent),radial-gradient(55% 45% at 8% 62%,#1fd66b77,transparent),radial-gradient(45% 35% at 50% 40%,#1fd66b33,transparent),#050505;
+  filter:blur(14px) saturate(1.2);transform:scale(1.05)}
+.shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#00000066,#000000b3 60%,#000000dd)}
+/* floating glow orbs = life */
+.orb{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 14s ease-in-out infinite alternate}
+.o1{width:420px;height:420px;background:var(--red);top:8%;left:-8%}
+.o2{width:480px;height:480px;background:var(--gold);bottom:5%;right:-10%;animation-delay:-6s}
+@keyframes float{to{transform:translate(70px,-50px) scale(1.15)}}
+
+/* glass panel used everywhere */
+.glass{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:var(--r)}
+
+/* ---------- VERTICAL SIDE BORDERS with picture placeholders (left + right) ---------- */
+.side{display:none;position:fixed;top:0;bottom:0;width:190px;z-index:30;overflow:hidden;background:rgba(0,0,0,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.side.l{left:0;border-right:8px solid;border-image:linear-gradient(180deg,var(--red),var(--gold),#fff,var(--green)) 1}
+.side.r{right:0;border-left:8px solid;border-image:linear-gradient(180deg,var(--green),#fff,var(--gold),var(--red)) 1}
+.track{padding-top:14px;animation:vs 50s linear infinite}
+.track.rev{animation-direction:reverse}
+.side .ph{width:140px;height:210px;min-height:0;margin:0 auto 14px;border-radius:20px;font-size:.8rem;color:#fff;border-width:3px;background:repeating-linear-gradient(135deg,#ffffff26 0 12px,#ffffff12 12px 24px)}
+.side img{display:block;width:140px;height:210px;object-fit:cover;border-radius:20px;margin:0 auto 14px;border:3px solid #fff}
+.side .ph,.side img{transition:transform .3s}
+.side .ph:hover,.side img:hover{transform:scale(1.08)}
+.side .ph svg{width:34px;height:34px}
+.side .ph:nth-child(4n+1){border-color:var(--red)}.side .ph:nth-child(4n+2){border-color:var(--gold)}.side .ph:nth-child(4n+3){border-color:#fff}.side .ph:nth-child(4n){border-color:var(--green)}
+.side:hover .track{animation-play-state:paused}
+@keyframes vs{to{transform:translateY(-50%)}}
+@media(min-width:1000px){.side{display:block}body{padding:0 190px}.top{right:210px}}
+/* PHOTO VIEWER (click any photo or placeholder to enlarge it) */
+img{max-width:100%}
+.ph,.ph img,.logo img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:30px;background:rgba(0,0,0,.94);backdrop-filter:blur(8px)}
+.lb.show{display:grid}
+.lbc img{max-width:92vw;max-height:86vh;object-fit:contain;border-radius:16px;border:3px solid #fff}
+.lbc .ph{width:min(86vw,900px);height:min(68vh,600px);min-height:0;font-size:1.1rem;color:#fff;border-color:var(--gold);cursor:default}
+.lbc .ph svg{width:70px;height:70px}
+.lbc .ph .yr{display:none}
+.lbx{position:absolute;top:18px;right:24px;width:50px;height:50px;border-radius:50%;border:0;font-size:1.8rem;cursor:pointer;background:var(--gold);color:#052418}
+/* titles of each content: one gradient (red > yellow > white > green) */
+.wrap h2,h3.sub,.hist h3{background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap h2 em{background:none}
+/* ---------- 1. HEADER: school logo | title | CS logo ---------- */
+header{max-width:none;margin:18px 0 0;padding:0 24px}
+@media(max-width:999px){header{padding:0 12px}}
+.head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 30px}
+.head h1{flex:1;min-width:0;white-space:nowrap;text-align:center;font-size:clamp(1.1rem,2.7vw,2.7rem);font-weight:800;letter-spacing:.06em;line-height:1.15}
+.head h1 span{display:block;font-size:.5em;font-weight:600;letter-spacing:.32em;margin-top:5px;background:linear-gradient(90deg,var(--red),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo{width:130px;height:130px;flex:none;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.68rem;color:var(--mut);border:2px dashed var(--line);background:var(--glass)}
+.logo img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+
+.head{background:linear-gradient(100deg,rgba(255,59,71,.6),rgba(31,214,107,.35) 50%,rgba(255,214,10,.55));color:#fff}
+.head h1 b{display:inline-block;font:inherit}
+/* ---------- 2. NAVIGATION (floating glass pill, sticky) ---------- */
+.nav{position:sticky;top:12px;z-index:50;width:fit-content;max-width:calc(100% - 24px);margin:14px auto 0}
+.nav ul{list-style:none;display:flex;gap:4px;padding:6px;overflow-x:auto;scrollbar-width:none}
+.nav a{display:block;padding:11px 22px;border-radius:50px;color:var(--mut);text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:.08em;white-space:nowrap;transition:.25s;cursor:pointer}
+.nav a:hover{color:#fff;background:var(--glass2)}
+.nav a.on{color:#052418;background:linear-gradient(90deg,var(--gold),var(--green));box-shadow:0 6px 22px #1fd66b55}
+.bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;background:linear-gradient(90deg,var(--red),var(--gold),var(--green))}
+
+/* ---------- 3. HOME (hero) ---------- */
+#home{min-height:78vh;display:grid;place-items:center;text-align:center;padding:60px 22px}
+#home .in{max-width:900px}
+.pill{display:inline-block;padding:7px 18px;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--gold);margin-bottom:26px}
+#home h2{font-size:clamp(2.4rem,7vw,5rem)}
+.w{display:inline-block;opacity:0;transform:translateY(24px);animation:up .7s forwards}
+@keyframes up{to{opacity:1;transform:none}}
+#home p{color:var(--mut);font-size:1.1rem;margin:22px auto 34px;max-width:560px}
+.btn{display:inline-block;padding:15px 34px;margin:5px;border-radius:50px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;transition:.25s;color:#052418;background:linear-gradient(90deg,var(--gold),var(--green))}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #1fd66b55}
+.btn.o{background:var(--glass);color:#fff;border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:-20px}
+.stats div{padding:26px 16px;text-align:center}
+.stats b{display:block;font-family:Sora,sans-serif;font-size:2.3rem;line-height:1.1;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{color:var(--mut);font-size:.85rem}
+
+#home p.ideals{font-family:Sora,sans-serif;font-weight:600;letter-spacing:.32em;color:var(--gold);font-size:1rem;margin:26px auto 0;max-width:none}
+/* balanced rows: cards always centered (3 on top, the rest centered below) */
+.cen{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.cen>*{flex:0 1 calc(33.333% - 15px);min-width:230px}
+/* highlighted cards (news + events) */
+.hl{position:relative;border-color:#ffd60a88!important;box-shadow:0 0 0 1px #ffd60a55,0 16px 40px #ffd60a22}
+.hl::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;z-index:2;background:linear-gradient(90deg,var(--red),var(--gold),var(--green))}
+.hl:hover{box-shadow:0 0 0 1px var(--gold),0 22px 54px #ffd60a40}
+.yr{position:absolute;top:18px;right:14px;z-index:3;padding:4px 14px;border-radius:50px;font:800 .8rem Sora,sans-serif;background:var(--gold);color:#052418}
+/* highlighted letters / words in Mission */
+.hlt{font-family:Sora,sans-serif;font-weight:800;font-size:1.5rem;background:linear-gradient(90deg,var(--gold),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hlt.big{font-size:1.5rem;letter-spacing:.12em}
+.mv .t p.c{text-align:center}
+/* professor card: photo on the left, name + caption beside it (never collides with the next card) */
+.pc{display:flex;align-items:center;gap:22px;padding:16px;transition:.35s}
+.pc:hover{transform:translateY(-8px);background:var(--glass2)}
+.cen>.pc{flex:0 1 calc(50% - 11px);min-width:320px}
+.pc .ph{width:190px;height:260px;flex:none;min-height:0}
+.pc .ph img{object-position:center top}
+.pt{flex:1;min-width:0}
+.pt h3{font-size:1.1rem;font-family:Sora,sans-serif;margin-bottom:6px;text-align:left}
+.pt p{font-size:.88rem;color:var(--mut);text-align:justify}
+/* the placeholder itself shows the achievement / event name, highlighted */
+.nm{display:block;padding:0 20px;font-family:Sora,sans-serif;font-weight:800;font-size:1.05rem;line-height:1.4;color:var(--gold);text-shadow:0 0 20px #ffd60a66}
+.nm small{display:block;margin-top:6px;font-size:.85rem;font-weight:600;color:var(--green);text-shadow:none}
+.n .ph svg{margin-bottom:8px}
+/* ---------- picture placeholder (dashed glass box) ---------- */
+.ph{display:grid;place-items:center;align-content:center;gap:6px;text-align:center;font-size:.76rem;color:var(--mut);min-height:100%;border:2px dashed var(--line);border-radius:var(--r);background:repeating-linear-gradient(135deg,#ffffff08 0 12px,#ffffff03 12px 24px)}
+.ph svg{width:32px;height:32px;stroke:var(--mut);fill:none;stroke-width:1.5}
+.ph{position:relative;overflow:hidden}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+
+.cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:28px 12px 10px;font:600 .82rem/1.35 Inter,sans-serif;text-align:center;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));pointer-events:none}
+.side .cap{font-size:.66rem;padding:20px 6px 6px}
+.pc .cap{font-size:.75rem}
+/* ---------- 4. UM ---------- */
+.split{display:grid;grid-template-columns:1fr 1.4fr;gap:34px;align-items:start}
+.hist{padding:34px;margin-top:34px}
+.hist h3{text-align:center;font-size:1.5rem;margin-bottom:14px}
+.history{position:relative;max-height:330px;overflow:hidden;transition:max-height .7s}
+.history.open{max-height:9000px}
+.history:not(.open)::after{content:"";position:absolute;inset:auto 0 0 0;height:130px;background:linear-gradient(transparent,#141414)}
+.history p{margin-bottom:1em;color:#f1faf4;text-align:justify}
+.more{margin-top:16px;border:0;cursor:pointer;font:600 .9rem Sora,sans-serif;padding:12px 28px;border-radius:50px;color:#052418;background:linear-gradient(90deg,var(--gold),var(--green))}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.gal .ph{height:150px}
+.mvm{display:flex;flex-direction:column;gap:22px;margin-top:34px}
+.mv{display:flex;overflow:hidden;transition:.35s}
+.mv:hover{transform:translateY(-8px);background:var(--glass2);border-color:#ffffff50}
+.mv .ph{width:300px;min-height:200px;flex:none;border-radius:0;border:0;border-right:2px dashed var(--line)}
+.mv .t{padding:26px 32px;flex:1;text-align:justify;text-align-last:center}
+.mv h3{text-align:center;font-size:1.5rem;margin-bottom:12px;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mv:nth-child(2) h3{background-image:linear-gradient(90deg,var(--gold),var(--green))}
+.mv:nth-child(3) h3{background-image:linear-gradient(90deg,var(--green),#ffffff)}
+.mv p{color:var(--mut);font-size:.95rem;margin-bottom:.6em;text-align:justify;text-align-last:center}
+
+/* ---------- 5. ABOUT CS ---------- */
+.empty{padding:40px;text-align:center;color:var(--mut);border-style:dashed;margin-bottom:70px}
+h3.sub{text-align:center;font-size:1.5rem;margin-bottom:22px;font-family:Sora,sans-serif}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
+.card{padding:14px 14px 24px;text-align:center;transition:.35s;transform-style:preserve-3d}
+.card:hover{transform:translateY(-10px);background:var(--glass2);box-shadow:0 20px 44px #0008,0 0 0 1px #1fd66b66}
+.card .ph{aspect-ratio:1;margin-bottom:16px}
+.card h3{font-size:1rem;font-family:Sora,sans-serif}
+.card p{font-size:.85rem;color:var(--mut);margin-top:8px;text-align:justify}
+.resume{display:inline-block;margin-top:14px;padding:8px 20px;border:1px dashed var(--green);border-radius:50px;color:var(--green);font-weight:600;font-size:.78rem;text-decoration:none}
+
+/* ---------- 6. NEWS & EVENTS ---------- */
+.tick{overflow:hidden;padding:14px 0;margin-bottom:34px;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tick div{display:inline-block;animation:mq 45s linear infinite}
+.tick:hover div{animation-play-state:paused}
+.tick span{margin:0 26px;font-weight:600;font-size:.9rem;color:var(--gold)}
+.tick span::before{content:"\2726";margin-right:14px;color:var(--green)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.n{overflow:hidden;transition:.35s}
+.n:hover{transform:translateY(-8px);background:var(--glass2)}
+.n .ph{height:260px;border-radius:0;border:0;border-bottom:2px dashed var(--line)}
+.n .t{padding:20px;text-align:center}
+.n h3{font-size:1rem;line-height:1.4;font-family:Inter,sans-serif;font-weight:700;text-align:center}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:3px 12px;border-radius:50px;margin-bottom:10px;color:#052418;background:var(--red)}
+.tag.g{background:var(--green)}
+.ev{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:64px}
+.ev ul{list-style:none}
+.ev li{display:flex;align-items:center;gap:16px;padding:12px;margin-bottom:12px;font-weight:600;transition:.3s}
+.ev li:hover{transform:translateX(8px);background:var(--glass2)}
+.ev li .ph{width:66px;height:54px;border-radius:12px;flex:none;min-height:0}
+.ev li .ph svg{width:20px;height:20px}
+.ev small{display:block;color:var(--mut);font-weight:400}
+
+/* ---------- 7. FOOTER ---------- */
+footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--red),var(--gold),var(--green)) 1}
+.foot{width:100%;padding:28px 6vw;display:grid;grid-template-columns:.8fr 1fr 1.7fr;gap:40px;align-items:start;font-size:.92rem;color:var(--mut)}
+.foot .brand{text-align:center;align-self:center}
+.foot .logo{width:150px;height:150px;margin:0 auto}
+.foot .brand b{display:block;font:800 1.15rem Sora,sans-serif;color:#fff;letter-spacing:.04em}
+.foot h4{font:800 .85rem Sora,sans-serif;letter-spacing:.2em;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.foot p{margin-bottom:6px;text-align:left}
+.foot .two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.foot a{color:var(--green);text-decoration:none;font-weight:600}
+.foot a:hover{color:var(--gold)}
+.top{position:fixed;right:22px;bottom:22px;z-index:60;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;font-size:1.3rem;color:#052418;background:linear-gradient(135deg,var(--gold),var(--green));opacity:0;pointer-events:none;transition:.3s}
+.top.show{opacity:1;pointer-events:auto}
+
+/* scroll reveal (only when JS is running, so nothing is ever hidden without it) */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+.js .rv.in{opacity:1;transform:none}
+
+@media(max-width:800px){
+  .split{grid-template-columns:1fr}
+  .head{flex-wrap:wrap;justify-content:center}.head h1{order:-1;flex:none;width:100%;font-size:clamp(1rem,4.2vw,2.2rem)}.logo{width:84px;height:84px}.mv{flex-direction:column}.mv .ph{width:100%!important;height:170px;border-right:0!important;border-bottom:2px dashed var(--line)!important}
+  .wrap{padding:70px 18px}.foot{grid-template-columns:1fr;gap:24px;padding:28px 7vw}.foot .two{grid-template-columns:1fr;gap:0}.pc{flex-direction:column;text-align:center;min-width:0}.pt h3{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.w{opacity:1;transform:none}.js .rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+
+/* PHOTO GROUPS: next / previous arrows in the viewer */
+.more-imgs{display:none}
+.lbn{display:none;position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;font-size:2rem;line-height:1;background:var(--gold);color:#052418;z-index:2}
+#lbp{left:24px}#lbnx{right:24px}
+.lbcount{display:none;position:absolute;top:26px;left:50%;transform:translateX(-50%);color:#fff;font-weight:600;background:#ffffff22;padding:6px 16px;border-radius:50px}
+.lbc{text-align:center}
+.lbcap{margin-top:14px;color:#fff;font-weight:600;font-size:1.05rem}
+.cnt{position:absolute;top:10px;right:10px;z-index:3;padding:3px 12px;border-radius:50px;font:700 .72rem Sora,sans-serif;background:var(--gold);color:#052418;pointer-events:none}
+
+
+/* OUR FAMILY & FRIENDS: one big capsule per person, photos fit inside their frames */
+.fam{padding:34px 30px 30px;margin-bottom:34px}
+.fname{text-align:center;font:800 1.7rem Sora,sans-serif;margin-bottom:24px;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.frow{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.fcard{flex:1 1 220px;max-width:calc(33.333% - 15px);background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:20px;padding:14px;text-align:center;transition:.3s}
+.fcard:hover{background:var(--glass2);transform:translateY(-6px)}
+.fcard .ph{position:relative;display:block;width:100%;height:auto;min-height:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;margin-bottom:12px}
+.fcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.fcard h4{font:800 .9rem Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:700px){.fcard{max-width:100%}}
+
+
+/* personal details list (My Team cards): compact */
+.info{list-style:none;margin:4px 0 2px}
+.info li{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;line-height:1.35;color:var(--mut);margin-bottom:4px;text-align:left}
+.info svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.info .motto{font-style:italic;color:#fff}
+.pc.wide{flex:0 1 100%;max-width:720px}
+
+/* smaller photo and tighter spacing for Andrea's wide card */
+.pc.wide{padding:14px 20px;gap:18px}
+.pc.wide .ph{width:160px;height:215px}
+
+/* MY TEAM: all 5 capsules are the SAME size. Andrea centered alone, the other four in 2 rows of 2 */
+.tm-top{display:flex;justify-content:center;margin-bottom:22px}
+.tm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,540px));gap:22px;justify-content:center}
+.tm-top .pc{width:min(540px,calc((100% - 22px)/2));max-width:none;padding:16px;gap:22px}
+.tm-top .pc .ph,.tm-grid .pc .ph{width:190px;height:260px}
+.tm-top .pt h3,.tm-grid .pt h3{font-size:1.05rem}
+@media(max-width:800px){.tm-grid{grid-template-columns:1fr}.tm-top .pc{width:100%}}
+
+/* CS VIDEO PRESENTATION capsule */
+.vid{padding:26px 30px 30px;margin:0 0 70px}
+.vid h3{text-align:center;font:800 1.5rem Sora,sans-serif;margin-bottom:18px;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.vid .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;border:2px solid var(--line)}
+.vid video,.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* event cards: title + date under the cover photo */
+.n .t h3{margin-top:6px;font-family:Sora,sans-serif;font-size:1.05rem}
+.n .t .when{color:var(--green);font-weight:600;font-size:.85rem}
+
+/* SHOP NOW: product capsules */
+.cen>.prod{flex:0 1 calc(33.333% - 15px);min-width:240px;max-width:340px;padding:14px;display:flex;flex-direction:column;transition:.35s}
+.prod:hover{transform:translateY(-8px);background:var(--glass2)}
+.prod .ph{position:relative;display:block;width:100%;height:auto;min-height:0;aspect-ratio:1/1;border-radius:16px;margin-bottom:14px}
+.prod .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pbody{display:flex;flex-direction:column;flex:1;text-align:center}
+.pbody h3{font:800 1.05rem Sora,sans-serif;margin-bottom:6px;background:linear-gradient(90deg,var(--red),var(--gold),#fff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.pbody p{font-size:.88rem;color:var(--mut);text-align:justify;text-align-last:center;margin-bottom:12px}
+.price{margin-top:auto;font:800 1.4rem Sora,sans-serif;color:var(--gold)}
+
+
+/* ---------- LOCATION MAP ---------- */
+.map-container {
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 16px;
+}
+
+.map-link {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.map-link a {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 50px;
+  color: #052418;
+  background: linear-gradient(90deg, #ffd60a, #1fd66b);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.map-link a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px #1fd66b55;
+}
+
+@media (max-width: 600px) {
+  .map-container iframe {
+    height: 320px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+
+
+<aside class="side l" aria-hidden="true"><div class="track">
+    <div class="ph"><img src="pictures2/awarding-mr.um.jpg" alt="Awarding Mr.UM"></div>
+    <div class="ph"><img src="pictures2/cs-officers.jpg" alt="CS Officers"></div>
+    <div class="ph"><img src="pictures2/cs-jap-costal-cleandrive.jpg" alt="Costal Cleandrive"></div>
+    <div class="ph"><img src="pictures2/um-prof-faculty.jpg" alt="UM PROFESSORS AND STAFF"></div>
+    <div class="ph"><img src="pictures2/nstp-csprof.jpg" alt="NSTP CWTS with CS PROFESSORS"></div>
+    <div class="ph"><img src="pictures2/um-fam.jpg" alt="UM Family"></div>
+    <div class="ph"><img src="pictures2/cs-jap-fieldtrip.jpg" alt="CS JAP FIELD"></div>
+    <div class="ph"><img src="pictures2/cs-prof-in-jap-event.jpg" alt="CS Prof in Jap Event"></div>
+    <div class="ph"><img src="pictures2/cosplay-comp-champion.jpg" alt="CS Student Champion Cosplay Competion"></div>
+    <div class="ph"><img src="pictures2/um-113th.jpg" alt="UM Event"></div>
+</div></aside>
+<aside class="side r" aria-hidden="true"><div class="track rev">
+    <div class="ph"><img src="pictures2/supportive-cs.jpg" alt="Supportive CS Family"></div>
+    <div class="ph"><img src="pictures2/cs-2025.jpg" alt="CS 2025"></div>
+    <div class="ph"><img src="pictures2/cs-prof-with-2other-prof.jpg" alt="CS Professor and 2 other professor"></div>
+    <div class="ph"><img src="pictures2/1st-year-sabayang-pagbigkas.jpg" alt="1st Year Sabayang Pagbigkas"></div>
+    <div class="ph"><img src="pictures2/2024-cheerdance-champion.jpg" alt="2024 Cheerdance Champion"></div>
+    <div class="ph"><img src="pictures2/cs-sabayang-pagbagsak.jpg" alt="Sabayang Pagbagsak haha"></div>
+    <div class="ph"><img src="pictures2/miss-intrams-2025.jpg" alt="Miss Intramurals 2025"></div>
+    <div class="ph"><img src="pictures2/cs-students-2025.jpg" alt="CS ACQUAINTANCE"></div>
+    <div class="ph"><img src="pictures2/cs-vb-mens.jpg" alt="CS VOLLEYBALL MENS"></div>
+    <div class="ph"><img src="pictures2/cs-vb-womens.jpg" alt="Costal Cleandrive"></div>
+</div></aside>
+<!-- Blurred university photo + shade + glowing orbs (background layers) -->
+<div class="bg"></div><div class="shade"></div><div class="orb o1"></div><div class="orb o2"></div>
+
+<!-- tiny picture icon reused in every placeholder -->
+<svg width="0" height="0" style="position:absolute"><symbol id="pic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></symbol></svg>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="head glass">
+ 
+    <div class="logo"><img src="pictures/um-logo.jpg" alt="UM LOGO"></div>
+    <!-- CENTER title -->
+    <h1><b>THE UNIVERSITY OF MANILA</b></h1>
+ 
+    <div class="logo"><img src="pictures/cs-logo.jpg" alt="CS LOGO"></div>
+  </div>
+</header>
+
+
+<nav class="nav glass" aria-label="Main">
+  <ul>
+    <li><a data-target="home" class="on" href="#home">HOME</a></li>
+    <li><a data-target="um" href="#um">UM</a></li>
+    <li><a data-target="cs" href="#cs">ABOUT CS</a></li>
+    <li><a data-target="news" href="#news">NEWS &amp; EVENTS</a></li>
+    <li><a data-target="developers" href="#developers">MY TEAM</a></li>
+    <li><a data-target="family" href="#family">FAMILY &amp; FRIENDS</a></li>
+    <li><a data-target="product" href="#product">PRODUCTS</a></li>
+    <li><a data-target="contact" href="#contact">MAP</a></li>
+    <li><a data-target="contact" href="#contact">CONTACT US</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ================= HOME ================= -->
+<section id="home">
+  <div class="in">
+    <span class="pill glass">COMPUTER SCIENCE DEPARTMENT</span>
+    <!-- Headline: JS splits it into words so each word slides in one by one -->
+    <h2 id="hl">Where academic excellence meets innovation in computer science.</h2>
+    <!-- Ideals line, right below the headline -->
+    <p class="ideals">PATRIA &nbsp;&bull;&nbsp; SCIENTIA &nbsp;&bull;&nbsp; VIRTUS</p>
+  </div>
+</section>
+
+<!-- ================= UM ================= -->
+<section id="um"><div class="wrap">
+  <h2 class="rv">University <em>of Manila</em></h2>
+  <p class="lead rv">Moving beyond excellence.</p>
+
+  <!-- PICTURES  -->
+  <div class="rv">
+    <div class="ph" style="height:320px"><img src="pictures2/um-gym-building.jpg" alt="UM Building"></div>
+    <div class="gal">
+      <div class="ph"><img src="pictures2/um-programs-students.jpg" alt="University Of Manila Programs"></div>
+      <div class="ph"><img src="pictures2/um-stage.jpg" alt="UM Stage"></div>
+      <div class="ph"><img src="pictures2/um-fam.jpg" alt="UM Family"></div>
+    </div>
+  </div>
+  <!-- HISTORY -->
+  <div class="hist glass rv">
+    <h3>The University of Manila History</h3>
+    <div class="history" id="hist">
+<p>On October 5, 1913, a group of four young men and a woman, with ages from fifteen to twenty-one met for breakfast at the Palma de Mallorca, a popular restaurant beside the Sto. Domingo Church in Intramuros, Manila.</p>
+  <p>The five were Dr. Apolinario G. de los Santos, his brother, Dr. Mariano V. de los Santos, his sister, Maria de los Santos, and two friends Dr. Buenaventura J. Bello and Atty. Antonio Rivero. They were only college students then, who were more daring than their contemporaries for they were determined to pursue their dream of putting up a school suited to the needs of the Filipino youth.</p>
+  <p>These impecunious young people, as they were called by the university historian, encountered many challenges in realizing their dream of establishing an institution whose motto was “Patria, Scientia, et Virtus. They named their school Instituto de Manila, after the city of their affection and Apolinario de los Santos was elected as the first director of the school.</p>
+  <p>The doors of the Instituto de Manila were first opened in school year 1914-1915. The forerunner of this institution offered only elementary and high school courses in a leased building located at the corner of Madrid and Peñarubia streets, Binondo District. However, in school year 1919-1920, in order to accommodate its growing populace and to provide them with better facilities, the Instituto de Manila started conducting classes in its own building at the Sampaloc District.</p>
+  <p>Before embarking on a program of expansion in order to meet the educational needs of its constituency, the Instituto de Manila had to undergo internal changes. On the occasion of its eighth anniversary, the original incorporators unanimously agreed to effect a reorganization geared towards the attainment of a university status. As a result, the Instituto de Manila was re-incorporated as the University of Manila on November 3, 1921 under the provisions of Act No. 1459 of the former Philippine Legislature.</p>
+  <p>Right after its re-incorporation, the University focused on providing more course offerings for their growing clientele. The growth and expansion marked the turning point of this democratic and dynamic institution which has withstood the test of time. The University has survived two world wars and the bewildering changes in the country and of the world: ideological, social, economic, and political.</p>
+  <p>The mustard seed that was the University of Manila continues to show impressive growth and expansion. In March 1919, the College of Law was formally opened. In the following year, 1920, the College of Liberal of Arts was also opened. In 1922-1923, three colleges: College of Philosophy and Letters, College of Education, and College of Business Administration were opened while the Department of Graduate Studies was opened in 1941. In December, 1945, the College of Engineering was opened and in the following year, 1946, the Academy of Music and the School of Foreign Service were born.</p>
+  <p>The College of Law was given government recognition on November 1, 1920. It was formally incorporated into the University during the academic year 1921-1922. Barely, after two years of its founding, the College of Law caught public attention and gained popular acclaim when two of its graduates: Pablo Payawal, who later became a prominent law practitioner, and Jose Carlos, who became a judge, copped the first and second places, respectively, in the 1920 Bar Examinations.</p>
+  <p>Three years later, former Civil Service Commissioner Amado Del Rosario and Cipriano Primicias who became a majority floor leader in the defunct Senate and who was one of the vice-presidential nominees for the 1961 national elections, followed suit by garnering the second and sixth places, respectively, in the 1922 Bar Examinations. And during the three years that followed, the graduates of the College easily hurdled the Bar with 100 percent passing average. This achievement of the College was so impressive that the pre-war Tribune and Philippine Herald newspapers were all praises for the University of Manila.</p>
+  <p>In 1933, Lope Quimbo, Manuel Alvero, and Guillermo Blanco became the first, second, and tenth placers in the Bar Examinations respectively. In 1936, the College again produced another batch of topnotchers where Teodorico Martin was the sixth placer who became the Dean of the College of Law of the University of the East. Again, in 1937, Sixto Domondon copped the tenth place in the Bar Examinations. To continue, in 1938, Emmanuel Pelaez, who was to become Vice-President of the Philippines, led that year’s Bar Examinations “elite” by copping the first place. With Emmanuel Pelaez there were also two topnotchers, namely Rodegelio Jalandoni, sixth placer, and Pedro Bacerro, the seventh placer in the Bar Examinations. In 1940, the College again showed its impressive performance by having Delfin De Vera garnering the fourth place in the Bar.</p>
+  <p>During the post-war years, the College of Law reasserted its Bar supremacy by producing topnotchers. In 1948, Jose M. Evangelista, who was to become ambassador, placed second and established a record high rating of 95.04 percent. Moreover, this feat was duplicated in 1949 by Dominador R. Aytona who also captured the second place. Aytona became a vice-presidential nominee in 1961 under the Nacionalista Party banner. Two years later, in 1951, Vicente Acsay kept up the excellent performance of the College by notching the first place in the Bar Examinations. The good showing of the College continued, for in 1953, Leonardo Amores, who was to become the illustrious faculty member of the College hit the same spot with the highest rating of 95.03 percent.</p>
+  <p>Up to the present year, the College of Law graduates fared exceedingly well in the bar examinations with ratings above the national passing percentage. In 2006, the College of Law graduates obtained a 75 percent passing in the Bar Examinations, again proving the quality of education being sustained throughout the years by the University of Manila.</p>
+  <p>To show the march to progress of the University, in 1949, courses were offered in Master of Arts in Political Science in the Department of Graduate Studies, followed by the opening of Master of Arts in History and Bachelor of Science in Elementary Education in 1951. Then, from 1963 to 1966, courses in the College of Criminology and Penology, the School of Secretarial Science and the master’s degree in Public Administration were offered. On June 7, 1976, the following two-year courses were offered— in Police Science and Technology, in Library Science, and in Bookkeeping; one-year course in Hotel and Restaurant Management and one-year course in Tourism.</p>
+  <p>The sustainable growth and expansion of the University were the products of the highly innovative, creative, and brilliant minds of those who occupied the presidency. Dr. Apolinario de los Santos was the University President from its inception until 1927. His successor was Dr. Mariano V. de los Santos, who assumed the presidency at the age of 29, and it is a matter of record and source of pardonable pride that he held the distinction of being the youngest university president in the Philippines, in Asia, and in the whole world. Dr. Mariano V. de los Santos co-founded the Philippine Association of Colleges and Universities (PACU) and was elected as its President from 1938 to 1939 and from 1955 to 1958. He also co-founded the United Nations Association of the Philippines. Moreover, he is the adviser on educational matters to six Philippine Presidents: Manuel L. Quezon, Jose P. Laurel, Manuel Roxas, Elpidio Quirino, Ramon Magsaysay and Carlos P. Garcia. He was president of the University until his untimely demise on October 13, 1959.</p>
+  <p>The unfinished task of leading the University was continued by Madame Helen de los Santos, who was described by the late Dr. Mariano V. de los Santos in his book, “Education and Life” as his life partner “who has shared with me all the tribulations of life but cared little for its vainglories.” One of the pioneers in education and a compleat Filipino woman, Madame Helen de los Santos held the presidency with distinction from 1959 to 1981.</p>
+  <p>Another chapter in UM history unfolded when Dr. Virgilio de los Santos (from the second generation of the de los Santoses) took over the presidency in 1981. With him at the helm, the University continually strived to strengthen its commitment to total academic excellence. The University has remained true to its trilogy of ideals: Patria, Scientia, et Virtus.</p>
+  <p>It envisions a dynamic community that is deeply steeped in the trilogy of UM Ideals: love of country, love of science and love of virtue; fully equipped with humane, conceptual, and technological skills; firmly determined to make life for others better, brighter, lighter and more livable, by making quality education accessible to all. The Motto of the University is to acquire knowledge and skills for the benefit of mankind.</p>
+  <p>Its Mission aims to create an atmosphere of academic excellence and competence, that is, firmly anchored in love of country, science and virtue; where citizens deeply concerned and truly committed to respond to the socio-cultural, psycho-spiritual and politico-economic challenges of the contemporary Filipino community are formed; fully empowered with modern scientific technological skills with which to brave the challenges of the global society.</p>
+  <p>Under the vigilant stewardship of Dr. Virgilio de los Santos, the University has been placed to a higher level of credit and standard. In line with the thrusts of the government and to keep abreast with the demands of the modern times, on February 16, 1994, the University offered four-year courses in Hotel and Restaurant Management and Computer Science. To show further that the University of Manila has come of age and in response to the call of the 90’s, on February 21, 1994, it offered new courses in the following programs: Doctor of Education, Doctor of Public Administration, and Master of Business Administration. These programs are designed to provide administrators, businessmen, analysts, researchers, and educators with the theoretical background, values, competencies, and skills for them to be able to participate and contribute to the growth and development of a better and a more humane society.</p>
+  <p>Dr. Virgilio de los Santos as a vanguard to Philippine and Japan relations received the highest honor the Emperor of Japan can give to a foreign national; the Rising Sun Medal of Honor.</p>
+  <p>On April 3, 2003, the University was granted the government permit to offer the four-year Bachelor of Arts in Cultural Languages, major in the Japanese Language. The University of Manila is the first university in the Philippines recognized to offer a degree course in the Japanese Language.</p>
+  <p>To add to this legacy, on November 7, 2005 a new four-storey building was constructed for the International Language School (ILS). The International Language School offers courses in the English language to foreign students like the Chinese, Japanese, and Koreans. It also offered courses in the Chinese language and Nihongo (Nippongo) language. The ILS building likewise provides accommodations for foreign students while they are studying. Thus, with these developments, the leaders of the University continually strive to realize the vision and mission of the institution and, that is, academic excellence imbued with values, not only for the Filipino youth but also for those of our neighboring countries.</p>
+  <p>In 2006, Dr. Emily Dodson De Leon the Senior Vice-President and Chief Academic Officer was elected by the Board of Trustees as President of the University of Manila. In 2007, Madame President Emily Dodson De Leon became the first Vice-President of PACU (Philippine Association of Colleges and Universities).</p>
+  <p>With her dynamic administration and dauntless leadership, the University has remained to be an institution to reckon with. She is the vital mover behind the sustainable progress of the University by initiating innovations and modern strategies in promoting quality education and these are shown when the University was granted by PACUCOA a formal accredited status for the College of Education for its two programs: Bachelor in Secondary Education and Bachelor in Elementary Education and the College of Business Administration.</p>
+  <p>Likewise, The College of Hotel and Restaurant Management and the College of Criminology were formally accredited by ACSCU-AAI (Association of Christian Colleges and Universities-Accrediting Agency Inc.).</p>
+  <p>Also, recognizing the value and relevance of facilities and equipment in the practical activities of the students, President Dr. Emily D. De Leon initiated the construction of the Acatour, a mini restaurant and café for the College of Hotel and Restaurant Management; the installation of a modern and fully-equipped kitchen; and the Hotel VDS. For the College of Criminology, forensic laboratories are installed, equipped with modern equipment like the dark room, crime investigation room, forensic ballistics and the computerized polygraph machine. The colleges are provided with the Learning Resources Center where peer tutorial programs, research, and mentoring are being conducted. Expansion of the University is being undertaken with the on-going construction of school buildings at the Malolos Campus with the aim of making it a world-class university.</p>
+  <p>Likewise, awards of recognition were given by the Professional Regulation Commission, Philippine Association of Professional Regulatory Board Members, Inc. and the Foundation for Outstanding Professionals, Inc. and the Philippine Federation of Professional Associations, Inc. to the College of Criminology for obtaining the highest number of board passers in Criminology for two consecutive academic years: 2007-2008 and 2008-2009.</p>
+  <p>In addition to the numerous scholarship programs of the institution, President Emily Dodson De Leon created the Dr. Emily D. De Leon Scholarship Program whose recipients are students from the poor families of the country. Through her indefatigable work, the University maintains productive and continuing linkages with Japan and Thailand for scholarship programs, the NGOs, and with the Philippine government.</p>
+  <p>Madame Emily Dodson De Leon, with her foresight and vision for greatness, has been working to make the University of Manila, an autonomous institution and a center of excellence in the field of education.</p>
+  <p>Notably, the University of Manila is an active member of the Philippine Association of Colleges and Universities (PACU), Association of Southeast Asian Institutions of Higher Learning (ASAIHL), Philippine Association of Colleges and Universities Commission on Accreditation (PACUCOA), United Nations Association of the Philippines (UNAP), Philippine Association of Teacher Education (PAFTE), Philippine Society for Educational Research and Evaluation (PSERE), the University Belt Consortium, and the International Association of Universities in Paris, France, the Philippine Association of Law Schools (PALS), Philippine Association of Graduate Education PAGE), Philippine Council of Deans and Educators in Business (PCDEB), and many others.</p>
+  <p>Furthermore, the University responded to the challenges of global education. The University of Manila with President, Dr. Emily D. De Leon at the helm, has maintained sisterhood agreements with different Asian universities: Dohto University of Saporro and Monbatsu cities of Hokkaido, Japan; Tokai University of Tokyo Japan; Hansun University of Seoul, Korea; Cheng Kung Commercial and Technical High School of Pate City, Taiwan, Republic of China; and most recently with Meio University of Nago City, Okinawa, Japan, and Cheongui University of South Korea and Phuket Rajabhat University, Thailand.</p>
+  <p>Verily, the record of the University of Manila of continuous service to the cause of education and research is a record that any respectable educational institution can be justly proud of. With such a record, the University of Manila stands firmly established as a formidable pillar of learning in the Philippines, truly, a rectory of scholarship within whose fold eager young men and women are trained not only to become successful practitioners but also to become leaders who will make the lives of others better, brighter, lighter, and more livable through quality and affordable education. This is The University of Manila, moving beyond excellence in education and research.</p>
+    </div>
+    <div style="text-align:center"><button class="more" id="histBtn">Read full history</button></div>
+  </div>
+
+  <!-- MISSION / VISION / MOTTO -->
+  <div class="mvm">
+    <div class="mv glass rv"><div class="t">
+      <h3>UM MISSION</h3>
+      
+      <p class="c"><span class="hlt big">ACE</span></p>
+      <p class="c">To accomplish something with complete success</p>
+      <p><span class="hlt">A</span>nchor in the hearts of the youth the love of country, science, and virtue.</p>
+      <p><span class="hlt">C</span>reate an atmosphere of academic excellence and competence.</p>
+      <p><span class="hlt">E</span>mpower the youth with modern scientific technological skills in braving the challenges of the global society.</p></div></div>
+    <div class="mv glass rv"><div class="t">
+      <h3>UM VISION</h3>
+      <p>To impart to the future generations the University of Manila trilogy of ideals: LOVE OF COUNTRY, LOVE OF SCIENCE and LOVE OF VIRTUE, in making the lives of others better, brighter, lighter and more livable by making quality education accessible to all.</p></div></div>
+    <div class="mv glass rv"><div class="t">
+      <h3>UM MOTTO</h3>
+      <p>To acquire knowledge, skills and values for the benefit of mankind.</p></div></div>
+  </div>
+</div></section>
+
+<!-- ================= ABOUT CS ================= -->
+<section id="cs"><div class="wrap">
+  <h2 class="rv">About <em>CS</em></h2>
+  <p class="lead rv">The story and the people of the Computer Science Department.</p>
+
+    <!-- CS History -->
+  <div class="mvm" style="margin:0 0 22px">
+    <div class="mv glass rv"><div class="t">
+      <h3>CS HISTORY</h3>
+      <p class="c">Prof. Dean Marjorie Borces<br>Dean, College of Computer Science</p>
+      <p>Under the vigilant stewardship of Dr. Virgilio de los Santos, the University has been placed to a higher level of credit and standard. In line with the thrusts of the government and to keep abreast with the demands of the modern times, on February 16, 1994, the University offered four-year courses in Computer Science. To show further that the University of Manila has come of age and in response to the call of the 90’s, on February 21, 1994, it offered new courses in the following programs: Doctor of Education, Doctor of Public Administration, and Master of Business Administration. These programs are designed to provide administrators, businessmen, analysts, researchers, and educators with the theoretical background, values, competencies, and skills for them to be able to participate and contribute to the growth and development of a better and a more humane society.</p></div></div>
+  </div>
+
+
+  <div class="mvm" style="margin:0 0 22px">
+    <div class="mv glass rv"><div class="t">
+      <h3>CS MISSION</h3>
+      <p>Provide quality undergraduate and graduate education in both the theoretical and applied foundations of computer science and train students to effectively apply this education to solve real-world problems thus amplifying their potential for lifelong high-quality careers and give them a competitive advantage in the ever-changing and challenging global work environment of the 21st century.</p></div></div>
+    <div class="mv glass rv"><div class="t">
+      <h3>CS VISION</h3>
+      <p>Build a strong research and teaching environment that responds swiftly to the challenges of the 21st century.</p></div></div>
+    <div class="mv glass rv"><div class="t">
+      <h3>CS MOTTO</h3>
+      <p>Driven by Science, United by Innovation, Guided by Virtue.</p></div></div>
+  </div>
+
+
+  <!-- AI AD -->
+  <div class="vid glass rv">
+    <h3>COMPUTER SCIENCE AI ADS VIDEO PRESENTATION</h3>
+    <div class="frame">
+      <video controls preload="metadata">
+        <source src="video/BSCS-AIPRESENTATION.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+
+  <h3 class="sub rv">Computer Science Professors</h3>
+  
+
+ 
+  <div class="cen" style="margin-bottom:22px">
+    <div class="pc glass rv"><div class="ph"><img src="pictures/rogelio-plaza-jr.jpg" alt="Rogelio Plaza Jr."></div><div class="pt"><h3>Professor Rogelio Plaza Jr.</h3><p>A faculty member of the University of Manila, where he contributes to the academic development and learning experience of students. Through his role as an educator, he helps students build a stronger understanding of their subjects while encouraging them to develop discipline, critical thinking, and problem-solving skills.</p></div></div>
+  </div>
+
+
+  <div class="cen">
+    <div class="pc glass rv"><div class="ph"><img src="pictures/joselito-borces.jpg" alt="Joselito Borces"></div><div class="pt"><h3>Professor Joselito Borces</h3><p>With a deep passion for technology and a commitment to academic excellence, Prof. Joselito Borces represents the knowledge, dedication, and expertise that continue to shape the field of Computer Science. His specialization in Computer Hardware reflects a strong understanding of computer components, system architecture, processors, memory, storage, input/output devices, and hardware troubleshooting.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="pictures/marjorie-borces.jpg" alt="Marjorie Borces"></div><div class="pt"><h3>Professor Marjorie Borces</h3><p>With a deep passion for education and a commitment to student success, she represents the knowledge, generosity, and dedication that continue to inspire learners in the field of Computer Science. Her intelligence, supportive nature, and willingness to guide students reflect her genuine commitment to academic excellence, personal growth, and creating a positive learning environment.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="pictures/rochelle-fallorina.jpg" alt="Rochelle Fallorina"></div><div class="pt"><h3>Professor Rochelle Anne Fallorina</h3><p>She served as a dedicated educator at The University of Manila, inspiring students through her passion for teaching and commitment to learning. She uses a hands-on approach to make complex lessons in Computer Science and Japanology easier to understand and apply. Her patience, expertise, and genuine care create an engaging learning environment that encourages students to develop their knowledge, build confidence, and achieve their full potential.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="pictures/stanley-verde.jpg" alt="Stanley Verde"></div><div class="pt"><h3>Professor Stanley Verde</h3><p>He served as a dedicated educator at the University of Manila. He brings real-world knowledge and practical insights to the classroom, helping students connect theory with actual industry applications. His expertise includes core Computer Science subjects such as programming, data structures and algorithms, computer systems, and software development. He also has a strong understanding of emerging technologies and their applications in real-world scenarios.
+</p></div></div>
+  </div>
+</div></section>
+<!-- ================= NEWS & EVENTS ================= -->
+<section id="news"><div class="wrap">
+  <h2 class="rv">News <em>&amp; Events</em></h2>
+  <p class="lead rv">Wins, celebrations and what is coming up.</p>
+
+
+  <div class="tick glass" aria-hidden="true"><div id="tick"></div></div>
+
+  
+  <div class="cen" id="newsGrid">
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span><div class="ph"><img src="pictures2/mr-um-3rdplace-2026.jpg" alt="MR UNIVERSITY OF MANILA 2ND 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span></div></div>
+        <div class="n glass hl rv"><span class="yr">MODERN DANCE CHAMPION 2026</span><div class="ph"><img src="pictures2/cs-modern-dance-2026-champion.jpg" alt="MODERN DANCE CHAMPION 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA 3RD PLACE 2026</span><div class="ph"><img src="pictures2/cs-3rdplace-buwan-ng-wika.jpg" alt="BUWAN NG WIKA 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA FESTIVAL 3RD PLACE 2026</span><div class="ph"><img src="pictures2/3rd-place-buwan-ng-wika-festival-2026.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA FESTIVAL 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">1ST PLACE IN CHEEREDANCE 2026</span><div class="ph"><img src="pictures2/1st-place-cheerdance-2026.jpg" alt="CS 1st PLACE in CHEERDANCE  2026"/></b></div><div class="t"><span class="tag g">1ST PLACE IN CHEEREDANCE 2026 </span></div></div>
+        <div class="n glass hl rv"><span class="yr">MR INTRAMURALS 2026</span><div class="ph"><img src="pictures2/mr-intramurals-2026.jpg" alt="MR INTRAMURALS 2026"/></b></div><div class="t"><span class="tag">MR INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2026</span><div class="ph"><img src="pictures2/cs-best-in-jersey-2026.jpg" alt="BEST IN JERSEY 2026"/></b></div><div class="t"><span class="tag g">BEST IN JERSEY 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA WINNER 2025</span><div class="ph"><img src="pictures2/awarding-mr.um.jpg" alt="MR UNIVERSITY OF MANILA 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA WINNER 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MISS & MR INTRAMURALS 2025</span><div class="ph"><img src="pictures2/cs-miss-intrams-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">MISS INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN COSTUME 2025</span><div class="ph"><img src="pictures2/cs-trophy-cheerdance.jpg" alt="CS BEST IN COSTUME 2025"/>5</b></div><div class="t"><span class="tag">COMSCIE WON BEST IN COSTUME CHEERDANCE 2025</span></div></div>
+    <div class="n glass hl rv"><span class="yr">CHEERDANCE CHAMPION 2025</span><div class="ph"><img src="pictures2/cs-champion-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></svg><b class="nm">COMSCIE CHAMPION CHEERDANCE 2025</b></div><div class="t"><span class="tag g">BEST IN COSTUME</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2025</span><div class="ph"><img src="pictures2/cs-best-in-jersey-2025.jpg" alt="CS BEST IN JERSEY 2025"/></b></div><div class="t"><span class="tag">BEST IN JERSEY 2025</span></div></div>
+  </div>
+
+    <!-- UM EVENTS -->
+  <h3 class="sub rv" style="margin-top:72px">UNIVERSITY OF MANILA EVENTS</h3>
+  <div class="cen">
+    <div class="n glass hl rv gal-group">
+      <div class="ph"><img src="pictures4/um-event-1.jpg" alt="Happy 113th Foundation Day University Of Manila!"></div>
+      <div class="more-imgs">
+        <img src="pictures4/um-event-2.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-3.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-4.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-5.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-6.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-7.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-8.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-9.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-10.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-11.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-12.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-13.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="pictures4/um-event-14.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+      </div>
+      <div class="t"><span class="tag">UM EVENT</span><h3>MR. & MS. UNIVERSITY OF MANILA 2026</h3><p class="when">October 1</p></div>
+    </div>
+    <div class="n glass hl rv gal-group">
+      <div class="ph"><img src="pictures4/mrms-um-2026-1.jpg" alt=""></div>
+      <div class="more-imgs">
+        <img src="pictures4/mrms-um-2026-2.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-3.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-4.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-5.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-6.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-7.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-8.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-9.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-10.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-11.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-12.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-13.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="pictures4/mrms-um-2026-14.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+      </div>
+      <div class="t"><span class="tag g">UNIVERSITY OF MANILA EVENT</span><h3>EVENT NAME</h3><p class="when">2026</p></div>
+    </div>
+    </div>
+    
+  
+
+  <!-- CS EVENTS -->
+  <h3 class="sub rv" style="margin-top:60px">COMPUTER SCIENCE EVENTS</h3>
+  <div class="cen">
+    <div class="n glass hl rv gal-group">
+      <div class="ph"><img src="pictures4/cs-acquaintance-party-1.jpg" alt="Acquaintance Party 2026 "></div>
+      <div class="more-imgs">
+        <img src="pictures4/cs-acquaintance-party-2.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-3.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-4.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-5.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-6.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-7.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-8.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-9.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-10.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-11.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-12.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-13.jpg" alt="Acquaintance Party 2026">
+        <img src="pictures4/cs-acquaintance-party-14.jpg" alt="Acquaintance Party 2026">
+      </div>
+      <div class="t"><span class="tag g">COMPUTER SCIENCE EVENT</span><h3>ACQUAINTANCE PARTY</h3><p class="when">2026</p></div>
+    </div>
+    <div class="n glass hl rv gal-group">
+      <div class="ph"><img src="pictures4/cs-sportfest-1.jpg" alt="Computer Science Sportfest 2026 "></div>
+      <div class="more-imgs">
+        <img src="pictures4/cs-sportfest-2.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-3.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-4.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-5.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-6.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-7.jpg" alt="Computer Science Sportfest 2026">
+        <img src="pictures4/cs-sportfest-8.jpg" alt="Computer Science Sportfest 2026">
+      
+      </div>
+      <div class="t"><span class="tag g">COMPUTER SCIENCE EVENT</span><h3>COMPUTER SCIENCE SPORTFEST 2026</h3><p class="when">2026</p></div>
+    </div>
+    
+  </div>
+</div></section>
+
+<!-- ================= MY TEAM ================= -->
+<section id="developers"><div class="wrap">
+  <h2 class="rv">My <em>Team</em></h2>
+  <p class="lead rv">The students who built this website.</p>
+
+  
+  <div class="tm-top">
+    <div class="pc glass rv">
+      <div class="ph"><img src="pictures/andrea-criszandra-cortez.jpg" alt="Andrea Criszandra Cortez"></div>
+      <div class="pt">
+        <h3>ANDREA CRISZANDRA CORTEZ</h3>
+        <ul class="info">
+          <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ilang-Ilang Pandacan Manila, Philippines</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0997-229-4548</li>
+          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>szandracortez09@gmail.com</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>01/20/2003</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Gaming, Cosplaying, Collecting Toys, Singing.</li>
+          <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"If you're not a good shot today, don't worry. There are other ways to be useful"</li>
+        </ul>
+        <a class="resume" href="resumes/andrea-criszandra-cortez.pdf" target="_blank" rel="noopener">VIEW RESUME</a>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="tm-grid">
+    <!-- ===== CHERRY JANE CABOTAJE ===== -->
+    <div class="pc glass rv"><div class="ph"><img src="pictures/cherry-jane-cabotaje.jpg" alt="Cherry Jane Cabotaje"></div><div class="pt"><h3>CHERRY JANE CABOTAJE</h3>
+      <ul class="info">
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>778 Finest Legacy Suites San Sebastian Quiapo Manila</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0938-388-8104</li>
+                  <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>chrryjn20@gmail.com</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>03/20/2006</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Singing, chess and do a 24hrs of sleeping.</li>
+        <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Freedom is the oxygen of the soul"</li>
+      </ul>
+      <a class="resume" href="resumes/cherry-jane-cabotaje.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+
+    <!-- ===== JHON PATRICK DARAUAY ===== -->
+    <div class="pc glass rv"><div class="ph"><img src="pictures/jhon-patrick-darauay.jpg" alt="Jhon Patrick Darauay"></div><div class="pt"><h3>JHON PATRICK DARAUAY</h3>
+      <ul class="info">
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>39 Capoas St. Masambong Quezon City</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0993-851-2458</li>
+         <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>jhonpatrickdarauay10@gmail.com</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>10/05/2005</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Watch Motorsport Racing, Car Spotting, Music and Walking.</li>
+        <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"A man's ambition should never exceed his worth"</li>
+      </ul>
+      <a class="resume" href="resumes/jhon-patrick-darauay.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+
+    <!-- ===== LLOYD ANDERSON CATAHUMBER ===== -->
+    <div class="pc glass rv"><div class="ph"><img src="pictures/lloyd-anderson-catahumber.jpg" alt="Lloyd Anderson Catahumber"></div><div class="pt"><h3>LLOYD ANDERSON CATAHUMBER</h3>
+      <ul class="info">
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>564 B Main street sampaloc manila</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>09911713673</li>
+                 <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>dyollnosredna@gmail.com</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>11/13/1999</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Arts and Crafts, Watching Anime</li>
+        <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Its never too late"</li>
+      </ul>
+      <a class="resume" href="resumes/lloyd-anderson-catahumber.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+
+    <!-- ===== IVY DANIELLE CAYABYAB ===== -->
+    <div class="pc glass rv"><div class="ph"><img src="pictures/ivy-danielle-cayabyab.jpg" alt="Ivy Danielle Cayabyab"></div><div class="pt"><h3>IVY DANIELLE CAYABYAB</h3>
+      <ul class="info">
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>79-1 V.A.B Pasay City</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0945-340-7093</li>
+                <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>ivydaniellecc@gmail.com</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>09/15/2005</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Walking, Singing, Sketching</li>
+        <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Do your best and Love well"</li>
+      </ul>
+      <a class="resume" href="resumes/ivy-danielle-cayabyab.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+  </div>
+</div></section>
+
+</main>
+
+<!-- ================= OUR FAMILY & FRIENDS ================= -->
+<section id="family"><div class="wrap">
+  <h2 class="rv">Our Family <em>&amp; Friends</em></h2>
+  <p class="lead rv">Our Beloved Family and Friends</p>
+
+  <!-- ===== ANDREA ===== -->
+  <div class="fam glass rv">
+    <h3 class="fname">Andrea Criszandra Cortez</h3>
+    <div class="frow">
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/dea-fam-pic-1.jpg" alt="My Sisters Wedding Day (I was at my school)"></div>
+        <div class="more-imgs">
+          <img src="pictures3/dea-fam-pic-2.jpg" alt="Christmas Celebration">
+          <img src="pictures3/dea-fam-pic-3.jpg" alt="Gala with Fam, Kain + Kanta = Happy Life">
+          <img src="pictures3/dea-fam-pic-4.jpg" alt="Different Kinds of Love, One Happy Heart. I love you both always~">
+          <img src="pictures3/dea-fam-pic-5.jpg" alt="with my half sister and whole young brother(?) haha">
+          <img src="pictures3/dea-fam-pic-6.jpg" alt="Aunties 60th Birthday, Thanks for taking care of me">
+          <img src="pictures3/dea-fam-pic-7.jpg" alt="Family pic, Insert Ate Cricket, idk where she is that time.">
+          <img src="pictures3/dea-fam-pic-8.jpg" alt="Thank you Espiritu Family for loving me as your real family. I love you all~">
+          
+        </div>
+        <h4>Family</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/dea-friend-1.jpg" alt="Me and My Twin"></div>
+        <div class="more-imgs">
+          <img src="pictures3/dea-friend-2.jpg" alt="My School Friends">
+          <img src="pictures3/dea-friend-3.jpg" alt="Mark my Bestie">
+          <img src="pictures3/dea-friend-4.jpg" alt="I miss them so much especially Marie-sama I hope you are happy and have a peaceful soul in the other side">
+          <img src="pictures3/dea-friend-5.jpg" alt="Senior High Bestie">
+          <img src="pictures3/dea-friend-6.jpg" alt="The Pinky Up">
+        </div>
+        <h4>Friends</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/dea-bf-1.jpg" alt="The Person I love the most, My Kuro the Goofiest Subibi"></div>
+        <div class="more-imgs">
+          <img src="pictures3/dea-bf-2.jpg" alt="YESSSSSS I DOOOOOOOO!!">
+          <img src="pictures3/dea-bf-3.jpg" alt="Yes, Foodtrip Date at Fussion Alley. How about Gym Date?!">
+          <img src="pictures3/dea-bf-4.jpg" alt="Spending too much money for ourselves not for Milk and Diaper haha!">
+          <img src="pictures3/dea-bf-5.jpg" alt="The two Goofy Subibis.">
+        </div>
+        <h4>Partner</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CHERRY ===== -->
+  <div class="fam glass rv">
+    <h3 class="fname">Cherry Jane Cabotaje</h3>
+    <div class="frow">
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/cherry-fam-1.jpg" alt="eeeeey swabe lang kami."></div>
+        <div class="more-imgs">
+          <img src="pictures3/cherry-fam-2.jpg" alt="I love Mayo's Family.">
+          <img src="pictures3/cherry-fam-3.jpg" alt="Cute namin pati height cute.">
+          <img src="pictures3/cherry-fam-4.jpg" alt="eeeey! panahong mapera pa pamilya ko">
+          <img src="pictures3/cherry-fam-5.jpg" alt="yeeeeheeeey.">
+          <img src="pictures3/cherry-fam-6.jpg" alt="sana sunod ako ikasal">
+          <img src="pictures3/cherry-fam-7.jpg" alt="complete kami ng pamilya ko hehe">
+        </div>
+        <h4>Family</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/cherry-friends-1.jpg" alt="bakit matatakot sa multo naging multo kaba ng oppurtunities na di ko nasubokan?."></div>
+        <div class="more-imgs">
+          <img src="pictures3/cherry-friends-2.jpg" alt="DI love my high school classmates">
+          <img src="pictures3/cherry-friends-3.jpg" alt="may sumpa sa trio.">
+          <img src="pictures3/cherry-friends-4.jpg" alt="sheeeeesh parang mga bato.">
+          <img src="pictures3/cherry-friends-5.jpg" alt="ganyan kapag sahod day.">
+        </div>
+        <h4>Friends</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/cherry-partner-1.jpg" alt="ay nagsleep si bossing"></div>
+        <div class="more-imgs">
+          <img src="pictures3/cherry-partner-2.jpg" alt="sana ma-headlock">
+          <img src="pictures3/cherry-partner-3.jpg" alt="pogi ng asawa ko">
+          <img src="pictures3/cherry-partner-4.jpg" alt="yown">
+          <img src="pictures3/cherry-partner-5.jpg" alt="mahal kita kahit nasa palawan ka">
+        </div>
+        <h4>Partner</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== IVY ===== -->
+  <div class="fam glass rv">
+    <h3 class="fname">Ivy Danielle Cayabyab</h3>
+    <div class="frow">
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/ivy-fam-1.jpg" alt="Forever my favorite people."></div>
+        <div class="more-imgs">
+          <img src="pictures3/ivy-fam-2.jpg" alt="No matter what, always family.">
+          <img src="pictures3/ivy-fam-3.jpg" alt="My first home and forever comfort.">
+          <img src="pictures3/ivy-fam-4.jpg" alt="My reason and my strength.">
+          <img src="pictures3/ivy-fam-5.jpg" alt="My greatest blessing.">
+        </div>
+        <h4>Family</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/ivy-friends-1.jpg" alt="Life is better with these people around."></div>
+        <div class="more-imgs">
+          <img src="pictures3/ivy-friends-2.jpg" alt="Little moments, unforgettable memories.">
+          <img src="pictures3/ivy-friends-3.jpg" alt="Good friends, good times, good memories.">
+          <img src="pictures3/ivy-friends-4.jpg" alt="My kind of people.">
+          <img src="pictures3/ivy-friends-5.jpg" alt="Life is better with you all.">
+        </div>
+        <h4>Friends</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/ivy-partner-1.jpg" alt="My kind of happiness."></div>
+        <div class="more-imgs">
+          <img src="pictures3/ivy-partner-2.jpg" alt="Us, in our own little world..">
+          <img src="pictures3/ivy-partner-3.jpg" alt="A little piece of my heart.">
+          <img src="pictures3/ivy-partner-4.jpg" alt="You make even the simplest moments feel worth remembering.">
+          <img src="pictures3/ivy-partner-5.jpg" alt="No matter where life takes us, I hope we keep choosing each other.">
+        </div>
+        <h4>Partner</h4>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PATRICK ===== -->
+  <div class="fam glass rv">
+    <h3 class="fname">Jhon Patrick Darauay</h3>
+    <div class="frow">
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/patrick-fam-1.jpg" alt="Family first, always and forever."></div>
+        <div class="more-imgs">
+          <img src="pictures3/patrick-fam-2.jpg" alt="My home, my strength, my family.">
+          <img src="pictures3/patrick-fam-3.jpg" alt="Together through every season of life.">
+          <img src="pictures3/patrick-fam-4.jpg" alt="Palipas oras para makalimot sa masakit na kahapon"
+
+          <img src="pictures3/patrick-fam-5.jpg" alt="Cute kong pamangkin">
+        </div>
+        <h4>Family</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/patrick-friend-1.jpg" alt="Boss D SAKALAM"></div>
+        <div class="more-imgs">
+          <img src="pictures3/patrick-friend-2.jpg" alt="Eatwell mga pre">
+          <img src="pictures3/patrick-friend-3.jpg" alt="wait, ano 'to?">
+          <img src="pictures3/patrick-friend-4.jpg" alt="Date with friends">
+          <img src="pictures3/patrick-friend-5.jpg" alt="Different paths, one bond, and countless memories that will last a lifetime.">
+          <img src="pictures3/patrick-friend-6.jpg" alt="Good friends turn ordinary moments into unforgettable memories.">
+        </div>
+        <h4>Friends</h4>
+      </div>
+        <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/patrick-partner-1.jpg" alt="Fueled by passion, driven by dreams."></div>
+        <div class="more-imgs">
+          <img src="pictures3/patrick-partner-2.jpg" alt="Speed is my obsession.">
+          <img src="pictures3/patrick-partner-3.jpg" alt="Four or two wheels, endless freedom.">
+          <img src="pictures3/patrick-partner-4.jpg" alt="Life is too short to drive boring cars and live ordinary stories.">
+          <img src="pictures3/patrick-partner-5.jpg" alt="Four wheels, endless roads, and a thousand dreams waiting to be chased">
+        </div>
+        <h4>Partner</h4>
+    </div>
+    </div>
+    </div>
+
+  <!-- ===== LLOYD ===== -->
+  <div class="fam glass rv">
+    <h3 class="fname">Lloyd Anderson Catahumber</h3>
+    <div class="frow">
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/lloyd-fam-1.jpg" alt="My Beloved Mother and Young Me"></div>
+        <div class="more-imgs">
+          <img src="pictures3/lloyd-fam-2.jpg" alt="My Beautiful and Kind Sister">
+          <img src="pictures3/lloyd-fam-3.jpg" alt="My Beautiful and Kind Sister">
+          <img src="pictures3/lloyd-fam-4.jpg" alt="Family at the acquaintance party">
+          <img src="pictures3/lloyd-fam-5.jpg" alt="Moments with My son">
+        </div>
+        <h4>Family</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/lloyd-friend-1.jpg" alt="True friends always says tagay!"></div>
+        <div class="more-imgs">
+          <img src="pictures3/lloyd-friend-2.jpg" alt="Tropa kong maloko pero di magpapaloko">
+          <img src="pictures3/lloyd-friend-3.jpg" alt="Tropa kong kahit sa CR nag a-update">
+          <img src="pictures3/lloyd-friend-4.jpg" alt="Soju nata">
+          <img src="pictures3/lloyd-friend-5.jpg" alt="Bonding with friends">
+        </div>
+        <h4>Friends</h4>
+      </div>
+      <div class="fcard gal-group">
+        <div class="ph"><img src="pictures3/lloyd-partner-1.jpg" alt="Ito partner ko sa buhay, walang kahit sinong babae makakatalo dito, isang case lang masaya na ko"></div>
+        <div class="more-imgs">
+          <img src="pictures3/lloyd-partner-2.jpg" alt="My Number 1">
+          <img src="pictures3/lloyd-partner-3.jpg" alt="Bestfriend ni Number 1">
+          <img src="pictures3/lloyd-partner-4.jpg" alt="different paths, one precious blessing">
+          <img src="pictures3/lloyd-partner-5.jpg" alt="The best part comes">
+        </div>
+        <h4>Partner</h4>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ================= SHOP NOW ================= -->
+<section id="product"><div class="wrap">
+  <h2 class="rv">PRODUCTS</h2>
+  <p class="lead rv"></p>
+
+
+  <div class="cen">
+
+ <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/dea-elysium-1.jpg" alt="ELYSIUM"></div>
+      <div class="more-imgs">
+        <img src="pictures5/dea-elysium-2.jpg" alt="ELYSIUM">
+     
+      </div>
+      <div class="pbody">
+        <h3>ELYSIUM</h3>
+        <p> Encased in heavy crystal glass and crowned with radiant gold, Elysium is an opulent fragrance that pairs warm amber tones with delicate floral elegance. Designed for absolute sophistication, a single spray leaves a rich, unforgettable trail of pure indulgence.</p>
+        <div class="price">₱83,439.00</div>
+      </div>
+    </div>
+
+    <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/dea-bag-1.jpg" alt="ZAVRÉNE"></div>
+      <div class="more-imgs">
+        <img src="pictures5/dea-bag-2.jpg" alt="ZAVRÉNE">
+     
+      </div>
+      <div class="pbody">
+        <h3>ZAVRÉNE</h3>
+        <p> Defined by timeless sophistication, this exquisite handbag features an elegant taupe finish, a beautifully structured silhouette, and refined gold-tone hardware. Crafted for those who appreciate understated luxury and impeccable style, it brings effortless elegance to every ensemble, making each occasion a reflection of grace, confidence, and enduring refinement.</p>
+        <div class="price">₱183,439.00</div>
+      </div>
+    </div>
+
+    <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/dea-laiwan-1.jpg" alt="LAIWAN NOEN"></div>
+      <div class="more-imgs">
+        <img src="pictures5/dea-laiwan-2.jpg" alt="LAIWAN NOEN PARFUM">
+       
+      </div>
+      <div class="pbody">
+        <h3>LAIWAN</h3>
+        <p> Embodies the art of refined perfumery, blending elegance, sophistication, and timeless allure into an unforgettable fragrance. With every delicate note, it leaves an enchanting trail of confidence and mystery, capturing the essence of understated luxury and leaving a lasting impression of grace, sensuality, and enduring beauty.</p>
+        <div class="price">₱79,349.00</div>
+      </div>
+    </div>
+
+<div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/lloyd-car-1.jpg" alt="AURELIS"></div>
+      <div class="more-imgs">
+        <img src="pictures5/lloyd-car-2.jpg" alt="AURELIS">
+        <img src="pictures5/lloyd-car-3.jpg" alt="AURELIS">
+      </div>
+
+      <div class="pbody">
+        <h3>AURELIS</h3>
+        <p> Represents the pinnacle of automotive elegance, where masterful craftsmanship, commanding design, and refined performance converge in perfect harmony. Every journey becomes an expression of prestige and distinction, surrounded by uncompromising comfort and understated grandeur, embodying a legacy of sophistication that transcends the ordinary and defines the true meaning of luxury.</p>
+        <div class="price">₱99,229,599.00</div>
+      </div>
+    </div>
+
+    <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/ivy-aurae-1.jpg" alt="AURAE"></div>
+      <div class="more-imgs">
+        <img src="pictures5/ivy-aurae-2.jpg" alt="AURAE">
+     
+      </div>
+      <div class="pbody">
+        <h3>AURAE Cream & Serum</h3>
+        <p>  The art of luxurious skincare, hydration, and radiance in an exquisite beauty ritual. With every application, DewGlow Serum and Cream work in harmony to leave the skin feeling soft, replenished, and beautifully luminous, capturing the essence of understated luxury and revealing a naturally radiant complexion that reflects confidence, grace, and timeless beauty.</p>
+        <div class="price">₱67,249.00</div>
+      </div>
+    </div>
+
+ <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/ivy-velora-1.jpg" alt="AURAE"></div>
+      <div class="more-imgs">
+        <img src="pictures5/ivy-velora-2.jpg" alt="AURAE">
+     
+      </div>
+      <div class="pbody">
+        <h3>VELORA</h3>
+        <p> Captures the art of refined perfumery, blending elegance, sophistication, and captivating allure into an unforgettable fragrance. With every delicate note, it leaves an enchanting trail of mystery and confidence, evoking the essence of timeless luxury and leaving a lasting impression of grace, sensuality, and irresistible beauty</p>
+        <div class="price">₱76,839.00</div>
+      </div>
+    </div>
+
+ <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/cherry-candle-1.jpg" alt="MIDNIGHT BLOWOM CANDLE"></div>
+      <div class="more-imgs">
+        <img src="pictures5/cherry-candle-2.jpg" alt="MIDNIGHT BLOWOM CANDLE">
+     
+      </div>
+      <div class="pbody">
+        <h3>MIDNIGHT BLOWOM</h3>
+        <p> Captures the essence of luxurious home fragrance, blending warmth, elegance, and enchanting floral allure into an intimate sensory experience. With its gentle glow and captivating ambiance, each flicker transforms any space into a sanctuary of comfort and sophistication, leaving a lasting impression of tranquility, timeless beauty, and understated luxury.</p>
+        <div class="price">₱11,839.00</div>
+      </div>
+    </div>
+
+    
+ <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/patrick-coke-1.jpg" alt="COCA-COLA"></div>
+      <div class="more-imgs">
+        <img src="pictures5/patrick-coke-2.jpg" alt="COCA-COLA">
+     
+      </div>
+      <div class="pbody">
+        <h3>COCA-COLA</h3>
+        <p>  Captures the joy of life's most memorable moments, blending refreshing taste, timeless tradition, and unmistakable character into an iconic experience. With every sip, it brings people together through a familiar burst of refreshment and delight, celebrating the simple pleasures of connection, happiness, and the enduring spirit of sharing.</p>
+        <div class="price">₱189.00</div>
+      </div>
+    </div>
+
+     <div class="prod glass rv gal-group">
+      <div class="ph"><img src="pictures5/cherry-mccafe-1.jpg" alt="MC CAFE"></div>
+      <div class="more-imgs">
+        <img src="pictures5/cherry-mccafe-2.jpg" alt="MC CAFE">
+     
+      </div>
+      <div class="pbody">
+        <h3>MC CAFE</h3>
+        <p> Celebrates the art of exceptional coffee, bringing together rich flavors, inviting aromas, and refined simplicity in every cup. Each sip offers a moment of warmth and indulgence, transforming everyday routines into meaningful experiences and creating a welcoming atmosphere where comfort, connection, and timeless cafe elegance come together beautifully.</p>
+        <div class="price">₱189.00</div>
+      </div>
+    </div>
+
+
+  </div>
+</div></section>
+
+
+<!-- ================= LOCATION / MAP ================= -->
+<section id="location">
+  <div class="wrap">
+    <h2 class="rv">Find <em>Us</em></h2>
+    <p class="lead rv">
+      Visit the University of Manila and the Computer Science Department.
+    </p>
+
+    <div class="map-container glass rv">
+      <iframe
+        src="https://maps.google.com/maps?q=University%20of%20Manila%20Manila%20Philippines&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Map showing the University of Manila">
+      </iframe>
+    </div>
+
+    <p class="map-link">
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=University+of+Manila+Manila+Philippines"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open in Google Maps ↗
+      </a>
+    </p>
+  </div>
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+<footer id="contact">
+
+  <div class="foot">
+    <div class="brand">
+     
+      <div class="logo"><img src="pictures/um-logo.jpg" alt="UM LOGO"></div>
+    </div>
+    <div>
+      <h4>ADDRESS</h4>
+      <p>546 Dr. Mariano V. De los Santos St.<br>Manila City, Metro Manila, Philippines</p>
+    </div>
+    <div>
+      <h4>CONTACT</h4>
+      <div class="two">
+        <div>
+          <p>735-5085 &nbsp;&bull;&nbsp; 735-5084</p>
+          <p>735-5098 &nbsp;&bull;&nbsp; 735-5094</p>
+          <p>FAX: 735-5089 &nbsp;&bull;&nbsp; 321-8773</p>
+        </div>
+        <div>
+          <p>Email: <a href="mailto:Admin@um.edu.ph">Admin@um.edu.ph</a></p>
+          <p>Website: <a href="http://www.um.edu.ph" target="_blank" rel="noopener">www.um.edu.ph</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- PHOTO VIEWER window -->
+<div class="lb" id="lb" role="dialog" aria-label="Photo viewer"><button class="lbx" id="lbx" aria-label="Close">&times;</button><button class="lbn" id="lbp" aria-label="Previous">&#8249;</button><button class="lbn" id="lbnx" aria-label="Next">&#8250;</button><div class="lbcount" id="lbcount"></div><div class="lbc" id="lbc"></div></div>
+
+<button class="top" id="top" aria-label="Back to top">&uarr;</button>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+document.documentElement.classList.add('js');
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+/* 1) NAVIGATION: every element with data-target scrolls smoothly to that section */
+function goTo(id){
+  const el=document.getElementById(id); if(!el) return;
+  const y=el.getBoundingClientRect().top+window.scrollY-(id==='home'?0:90);
+  window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+}
+$$('[data-target]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.dataset.target)}));
+
+/* 2) Highlight the current section in the nav + progress bar + back-to-top button */
+const ids=['home','um','cs','news','developers','family','product','location','contact'];
+function onScroll(){
+  const y=window.scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  $('#bar').style.width=(h>0?y/h*100:0)+'%';
+  $('#top').classList.toggle('show',y>600);
+  let cur='home';
+  ids.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<innerHeight*0.4) cur=id;});
+  if(innerHeight+y>=document.documentElement.scrollHeight-4) cur='contact';
+  $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.target===cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#top').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+/* 3) Hero headline: words slide in one after another */
+const hl=$('#hl');
+hl.innerHTML=hl.textContent.split(' ').map((w,i)=>`<span class="w" style="animation-delay:${i*0.12}s">${w}</span>`).join(' ');
+
+/* 4) Expand / collapse the long UM history */
+$('#histBtn').onclick=function(){const o=$('#hist').classList.toggle('open');this.textContent=o?'Show less':'Read full history'};
+
+/* 5) Scroll reveal + count-up numbers */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting) return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+  const b=e.target.querySelector('[data-n]');
+  if(b){const t=+b.dataset.n,s=performance.now();(function f(n){const p=Math.min((n-s)/1400,1);b.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)}
+}),{threshold:.15});
+$$('.rv').forEach(el=>io.observe(el));
+
+/* 9) Header title: biggest size that still fits on ONE line */
+function fitTitle(){
+  const h=$('.head h1'),b=h.firstElementChild;
+  h.style.fontSize='100px';
+  const s=100*h.clientWidth/b.offsetWidth*0.97;
+  h.style.fontSize=Math.max(16,Math.min(80,s))+'px';
+}
+fitTitle(); addEventListener('resize',fitTitle); addEventListener('load',fitTitle);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitTitle);
+
+/* 8) Photo viewer. Photos inside a ".gal-group" card get NEXT / PREVIOUS arrows */
+const lb=$('#lb'),lbc=$('#lbc'),lbp=$('#lbp'),lbnx=$('#lbnx'),lbcount=$('#lbcount');
+let gal=[],gi=0;
+const multi=()=>lbnx.style.display==='block';
+function showPhoto(){
+  const img=gal[gi];
+  lbc.innerHTML=`<img src="${img.src}" alt="${img.alt||''}">`+(img.alt?`<p class="lbcap">${img.alt}</p>`:'');
+  const m=gal.length>1;
+  lbp.style.display=lbnx.style.display=lbcount.style.display=m?'block':'none';
+  lbcount.textContent=(gi+1)+' / '+gal.length;
+}
+function step(d){gi=(gi+d+gal.length)%gal.length;showPhoto()}
+function closeLb(){lb.classList.remove('show');lbc.innerHTML=''}
+document.addEventListener('click',e=>{
+  if(e.target.closest('#lbp')){step(-1);return}
+  if(e.target.closest('#lbnx')){step(1);return}
+  if(e.target.closest('#lbx')||e.target===lb||e.target===lbc){closeLb();return}
+  if(e.target.closest('#lb')) return;
+  const el=e.target.closest('img, .ph'); if(!el) return;
+  const grp=el.closest('.gal-group');
+  if(grp){
+    gal=[...grp.querySelectorAll('img')];
+    const clicked=el.tagName==='IMG'?el:el.querySelector('img');
+    gi=Math.max(0,gal.indexOf(clicked)); showPhoto(); lb.classList.add('show'); return;
+  }
+  lbc.innerHTML=el.tagName==='IMG'?`<img src="${el.src}" alt="${el.alt||''}">`:el.outerHTML;
+  lbp.style.display=lbnx.style.display=lbcount.style.display='none';
+  lb.classList.add('show');
+});
+addEventListener('keydown',e=>{
+  if(!lb.classList.contains('show')) return;
+  if(e.key==='Escape') closeLb();
+  if(e.key==='ArrowRight'&&multi()) step(1);
+  if(e.key==='ArrowLeft'&&multi()) step(-1);
+});
+let tx=0;
+lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50&&multi())step(d<0?1:-1)});
+/* "3 photos" badge on each group's cover photo */
+$$('.gal-group').forEach(g=>{const n=g.querySelectorAll('img').length;if(n>1)g.querySelector('.ph').insertAdjacentHTML('beforeend',`<span class="cnt">${n} photos</span>`)});
+addEventListener('keydown',e=>{if(e.key==='Escape'){lb.classList.remove('show');lbc.innerHTML=''}});
+
+/* 7) Side strips: duplicate the tiles so the vertical loop never shows a gap */
+$$('.track').forEach(tr=>{tr.innerHTML+=tr.innerHTML});
+
+
+/* 6) News ticker: copy the news titles twice so it loops forever */
+const titles=$$('#newsGrid .yr').map(h=>`<span>${h.textContent}</span>`).join('');
+$('#tick').innerHTML=titles+titles;
+</script>
+</body>
+</html>
