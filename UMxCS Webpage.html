@@ -17,7 +17,7 @@ body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--txt);back
 h1,h2,h3,.nav a,.btn{font-family:Sora,Inter,system-ui,sans-serif}
 section{scroll-margin-top:100px;position:relative}
 .wrap{max-width:1160px;margin:auto;padding:100px 22px}
-h2{text-align:center;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;letter-spacing:-.03em;font-weight:800}
+h2{text-align:center;font-size:clamp(2rem,4.vw,3.2rem);line-height:1.1;letter-spacing:-.03em;font-weight:800}
 h2 em{font-style:normal;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{color:var(--mut);max-width:640px;margin:12px auto 44px;text-align:center}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
@@ -29,7 +29,7 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--red),var(--gold),
   filter:blur(14px) saturate(1.2);transform:scale(1.05)}
 .shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#00000066,#000000b3 60%,#000000dd)}
 /* floating glow orbs = life */
-.orb{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.45;animation:float 14s ease-in-out infinite alternate}
+.orb{position:fixed;z-index:-1;border-radius:50%;filter:blur(90px);opacity:.;animation:float 14s ease-in-out infinite alternate}
 .o1{width:420px;height:420px;background:var(--red);top:8%;left:-8%}
 .o2{width:480px;height:480px;background:var(--gold);bottom:5%;right:-10%;animation-delay:-6s}
 @keyframes float{to{transform:translate(70px,-50px) scale(1.15)}}
@@ -45,7 +45,7 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--red),var(--gold),
 .track.rev{animation-direction:reverse}
 .side .ph{width:140px;height:210px;min-height:0;margin:0 auto 14px;border-radius:20px;font-size:.8rem;color:#fff;border-width:3px;background:repeating-linear-gradient(135deg,#ffffff26 0 12px,#ffffff12 12px 24px)}
 .side img{display:block;width:140px;height:210px;object-fit:cover;border-radius:20px;margin:0 auto 14px;border:3px solid #fff}
-.side .ph,.side img{transition:transform .3s}
+.side .ph,.side img{transition:transform .s}
 .side .ph:hover,.side img:hover{transform:scale(1.08)}
 .side .ph svg{width:34px;height:34px}
 .side .ph:nth-child(4n+1){border-color:var(--red)}.side .ph:nth-child(4n+2){border-color:var(--gold)}.side .ph:nth-child(4n+3){border-color:#fff}.side .ph:nth-child(4n){border-color:var(--green)}
@@ -70,11 +70,11 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 @media(max-width:999px){header{padding:0 12px}}
 .head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 30px}
 .head h1{flex:1;min-width:0;white-space:nowrap;text-align:center;font-size:clamp(1.1rem,2.7vw,2.7rem);font-weight:800;letter-spacing:.06em;line-height:1.15}
-.head h1 span{display:block;font-size:.5em;font-weight:600;letter-spacing:.32em;margin-top:5px;background:linear-gradient(90deg,var(--red),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.head h1 span{display:block;font-size:.em;font-weight:600;letter-spacing:.2em;margin-top:5px;background:linear-gradient(90deg,var(--red),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
 .logo{width:130px;height:130px;flex:none;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.68rem;color:var(--mut);border:2px dashed var(--line);background:var(--glass)}
 .logo img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 
-.head{background:linear-gradient(100deg,rgba(255,59,71,.6),rgba(31,214,107,.35) 50%,rgba(255,214,10,.55));color:#fff}
+.head{background:linear-gradient(100deg,rgba(255,59,71,.6),rgba(31,214,107,.) 50%,rgba(255,214,10,.5));color:#fff}
 .head h1 b{display:inline-block;font:inherit}
 /* ---------- 2. NAVIGATION (floating glass pill, sticky) ---------- */
 .nav{position:sticky;top:12px;z-index:50;width:fit-content;max-width:calc(100% - 24px);margin:14px auto 0}
@@ -88,7 +88,7 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 #home{min-height:78vh;display:grid;place-items:center;text-align:center;padding:60px 22px}
 #home .in{max-width:900px}
 .pill{display:inline-block;padding:7px 18px;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--gold);margin-bottom:26px}
-#home h2{font-size:clamp(2.4rem,7vw,5rem)}
+#home h2{font-size:clamp(2.rem,7vw,5rem)}
 .w{display:inline-block;opacity:0;transform:translateY(24px);animation:up .7s forwards}
 @keyframes up{to{opacity:1;transform:none}}
 #home p{color:var(--mut);font-size:1.1rem;margin:22px auto 34px;max-width:560px}
@@ -97,24 +97,24 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 .btn.o{background:var(--glass);color:#fff;border:1px solid var(--line)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:-20px}
 .stats div{padding:26px 16px;text-align:center}
-.stats b{display:block;font-family:Sora,sans-serif;font-size:2.3rem;line-height:1.1;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats b{display:block;font-family:Sora,sans-serif;font-size:2.rem;line-height:1.1;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
 .stats span{color:var(--mut);font-size:.85rem}
 
-#home p.ideals{font-family:Sora,sans-serif;font-weight:600;letter-spacing:.32em;color:var(--gold);font-size:1rem;margin:26px auto 0;max-width:none}
+#home p.ideals{font-family:Sora,sans-serif;font-weight:600;letter-spacing:.2em;color:var(--gold);font-size:1rem;margin:26px auto 0;max-width:none}
 /* balanced rows: cards always centered (3 on top, the rest centered below) */
 .cen{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
-.cen>*{flex:0 1 calc(33.333% - 15px);min-width:230px}
+.cen>*{flex:0 1 calc(33.33% - 15px);min-width:230px}
 /* highlighted cards (news + events) */
 .hl{position:relative;border-color:#ffd60a88!important;box-shadow:0 0 0 1px #ffd60a55,0 16px 40px #ffd60a22}
 .hl::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;z-index:2;background:linear-gradient(90deg,var(--red),var(--gold),var(--green))}
 .hl:hover{box-shadow:0 0 0 1px var(--gold),0 22px 54px #ffd60a40}
 .yr{position:absolute;top:18px;right:14px;z-index:3;padding:4px 14px;border-radius:50px;font:800 .8rem Sora,sans-serif;background:var(--gold);color:#052418}
 /* highlighted letters / words in Mission */
-.hlt{font-family:Sora,sans-serif;font-weight:800;font-size:1.5rem;background:linear-gradient(90deg,var(--gold),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hlt.big{font-size:1.5rem;letter-spacing:.12em}
+.hlt{font-family:Sora,sans-serif;font-weight:800;font-size:1.rem;background:linear-gradient(90deg,var(--gold),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hlt.big{font-size:1.rem;letter-spacing:.12em}
 .mv .t p.c{text-align:center}
 /* professor card: photo on the left, name + caption beside it (never collides with the next card) */
-.pc{display:flex;align-items:center;gap:22px;padding:16px;transition:.35s}
+.pc{display:flex;align-items:center;gap:22px;padding:16px;transition:.s}
 .pc:hover{transform:translateY(-8px);background:var(--glass2)}
 .cen>.pc{flex:0 1 calc(50% - 11px);min-width:320px}
 .pc .ph{width:190px;height:260px;flex:none;min-height:0}
@@ -123,22 +123,22 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 .pt h3{font-size:1.1rem;font-family:Sora,sans-serif;margin-bottom:6px;text-align:left}
 .pt p{font-size:.88rem;color:var(--mut);text-align:justify}
 /* the placeholder itself shows the achievement / event name, highlighted */
-.nm{display:block;padding:0 20px;font-family:Sora,sans-serif;font-weight:800;font-size:1.05rem;line-height:1.4;color:var(--gold);text-shadow:0 0 20px #ffd60a66}
+.nm{display:block;padding:0 20px;font-family:Sora,sans-serif;font-weight:800;font-size:1.05rem;line-height:1.;color:var(--gold);text-shadow:0 0 20px #ffd60a66}
 .nm small{display:block;margin-top:6px;font-size:.85rem;font-weight:600;color:var(--green);text-shadow:none}
 .n .ph svg{margin-bottom:8px}
 /* ---------- picture placeholder (dashed glass box) ---------- */
 .ph{display:grid;place-items:center;align-content:center;gap:6px;text-align:center;font-size:.76rem;color:var(--mut);min-height:100%;border:2px dashed var(--line);border-radius:var(--r);background:repeating-linear-gradient(135deg,#ffffff08 0 12px,#ffffff03 12px 24px)}
-.ph svg{width:32px;height:32px;stroke:var(--mut);fill:none;stroke-width:1.5}
+.ph svg{width:32px;height:32px;stroke:var(--mut);fill:none;stroke-width:1.}
 .ph{position:relative;overflow:hidden}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 
-.cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:28px 12px 10px;font:600 .82rem/1.35 Inter,sans-serif;text-align:center;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));pointer-events:none}
+.cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:28px 12px 10px;font:600 .82rem/1. Inter,sans-serif;text-align:center;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.85));pointer-events:none}
 .side .cap{font-size:.66rem;padding:20px 6px 6px}
 .pc .cap{font-size:.75rem}
 /* ---------- 4. UM ---------- */
-.split{display:grid;grid-template-columns:1fr 1.4fr;gap:34px;align-items:start}
+.split{display:grid;grid-template-columns:1fr 1.fr;gap:34px;align-items:start}
 .hist{padding:34px;margin-top:34px}
-.hist h3{text-align:center;font-size:1.5rem;margin-bottom:14px}
+.hist h3{text-align:center;font-size:1.rem;margin-bottom:14px}
 .history{position:relative;max-height:330px;overflow:hidden;transition:max-height .7s}
 .history.open{max-height:9000px}
 .history:not(.open)::after{content:"";position:absolute;inset:auto 0 0 0;height:130px;background:linear-gradient(transparent,#141414)}
@@ -147,20 +147,20 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
 .gal .ph{height:150px}
 .mvm{display:flex;flex-direction:column;gap:22px;margin-top:34px}
-.mv{display:flex;overflow:hidden;transition:.35s}
+.mv{display:flex;overflow:hidden;transition:.s}
 .mv:hover{transform:translateY(-8px);background:var(--glass2);border-color:#ffffff50}
 .mv .ph{width:300px;min-height:200px;flex:none;border-radius:0;border:0;border-right:2px dashed var(--line)}
 .mv .t{padding:26px 32px;flex:1;text-align:justify;text-align-last:center}
-.mv h3{text-align:center;font-size:1.5rem;margin-bottom:12px;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.mv h3{text-align:center;font-size:1.rem;margin-bottom:12px;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
 .mv:nth-child(2) h3{background-image:linear-gradient(90deg,var(--gold),var(--green))}
 .mv:nth-child(3) h3{background-image:linear-gradient(90deg,var(--green),#ffffff)}
 .mv p{color:var(--mut);font-size:.95rem;margin-bottom:.6em;text-align:justify;text-align-last:center}
 
 /* ---------- 5. ABOUT CS ---------- */
 .empty{padding:40px;text-align:center;color:var(--mut);border-style:dashed;margin-bottom:70px}
-h3.sub{text-align:center;font-size:1.5rem;margin-bottom:22px;font-family:Sora,sans-serif}
+h3.sub{text-align:center;font-size:1.rem;margin-bottom:22px;font-family:Sora,sans-serif}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px}
-.card{padding:14px 14px 24px;text-align:center;transition:.35s;transform-style:preserve-3d}
+.card{padding:14px 14px 24px;text-align:center;transition:.s;transform-style:preserve-3d}
 .card:hover{transform:translateY(-10px);background:var(--glass2);box-shadow:0 20px 44px #0008,0 0 0 1px #1fd66b66}
 .card .ph{aspect-ratio:1;margin-bottom:16px}
 .card h3{font-size:1rem;font-family:Sora,sans-serif}
@@ -175,16 +175,16 @@ h3.sub{text-align:center;font-size:1.5rem;margin-bottom:22px;font-family:Sora,sa
 .tick span::before{content:"\2726";margin-right:14px;color:var(--green)}
 @keyframes mq{to{transform:translateX(-50%)}}
 .news{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-.n{overflow:hidden;transition:.35s}
+.n{overflow:hidden;transition:.s}
 .n:hover{transform:translateY(-8px);background:var(--glass2)}
 .n .ph{height:260px;border-radius:0;border:0;border-bottom:2px dashed var(--line)}
 .n .t{padding:20px;text-align:center}
-.n h3{font-size:1rem;line-height:1.4;font-family:Inter,sans-serif;font-weight:700;text-align:center}
+.n h3{font-size:1rem;line-height:1.;font-family:Inter,sans-serif;font-weight:700;text-align:center}
 .tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;padding:3px 12px;border-radius:50px;margin-bottom:10px;color:#052418;background:var(--red)}
 .tag.g{background:var(--green)}
 .ev{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:64px}
 .ev ul{list-style:none}
-.ev li{display:flex;align-items:center;gap:16px;padding:12px;margin-bottom:12px;font-weight:600;transition:.3s}
+.ev li{display:flex;align-items:center;gap:16px;padding:12px;margin-bottom:12px;font-weight:600;transition:.s}
 .ev li:hover{transform:translateX(8px);background:var(--glass2)}
 .ev li .ph{width:66px;height:54px;border-radius:12px;flex:none;min-height:0}
 .ev li .ph svg{width:20px;height:20px}
@@ -201,7 +201,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 .foot .two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .foot a{color:var(--green);text-decoration:none;font-weight:600}
 .foot a:hover{color:var(--gold)}
-.top{position:fixed;right:22px;bottom:22px;z-index:60;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;font-size:1.3rem;color:#052418;background:linear-gradient(135deg,var(--gold),var(--green));opacity:0;pointer-events:none;transition:.3s}
+.top{position:fixed;right:22px;bottom:22px;z-index:60;width:50px;height:50px;border-radius:50%;border:0;cursor:pointer;font-size:1.rem;color:#052418;background:linear-gradient(135deg,var(--gold),var(--green));opacity:0;pointer-events:none;transition:.s}
 .top.show{opacity:1;pointer-events:auto}
 
 /* scroll reveal (only when JS is running, so nothing is ever hidden without it) */
@@ -230,7 +230,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 .fam{padding:34px 30px 30px;margin-bottom:34px}
 .fname{text-align:center;font:800 1.7rem Sora,sans-serif;margin-bottom:24px;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
 .frow{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
-.fcard{flex:1 1 220px;max-width:calc(33.333% - 15px);background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:20px;padding:14px;text-align:center;transition:.3s}
+.fcard{flex:1 1 220px;max-width:calc(33.33% - 15px);background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:20px;padding:14px;text-align:center;transition:.s}
 .fcard:hover{background:var(--glass2);transform:translateY(-6px)}
 .fcard .ph{position:relative;display:block;width:100%;height:auto;min-height:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;margin-bottom:12px}
 .fcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
@@ -240,7 +240,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
 /* personal details list (My Team cards): compact */
 .info{list-style:none;margin:4px 0 2px}
-.info li{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;line-height:1.35;color:var(--mut);margin-bottom:4px;text-align:left}
+.info li{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;line-height:1.;color:var(--mut);margin-bottom:4px;text-align:left}
 .info svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .info .motto{font-style:italic;color:#fff}
 .pc.wide{flex:0 1 100%;max-width:720px}
@@ -259,7 +259,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
 /* CS VIDEO PRESENTATION capsule */
 .vid{padding:26px 30px 30px;margin:0 0 70px}
-.vid h3{text-align:center;font:800 1.5rem Sora,sans-serif;margin-bottom:18px;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.vid h3{text-align:center;font:800 1.rem Sora,sans-serif;margin-bottom:18px;background:linear-gradient(90deg,var(--red),var(--gold),#ffffff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
 .vid .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;border:2px solid var(--line)}
 .vid video,.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
@@ -268,14 +268,14 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 .n .t .when{color:var(--green);font-weight:600;font-size:.85rem}
 
 /* SHOP NOW: product capsules */
-.cen>.prod{flex:0 1 calc(33.333% - 15px);min-width:240px;max-width:340px;padding:14px;display:flex;flex-direction:column;transition:.35s}
+.cen>.prod{flex:0 1 calc(33.33% - 15px);min-width:240px;max-width:340px;padding:14px;display:flex;flex-direction:column;transition:.s}
 .prod:hover{transform:translateY(-8px);background:var(--glass2)}
 .prod .ph{position:relative;display:block;width:100%;height:auto;min-height:0;aspect-ratio:1/1;border-radius:16px;margin-bottom:14px}
 .prod .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pbody{display:flex;flex-direction:column;flex:1;text-align:center}
 .pbody h3{font:800 1.05rem Sora,sans-serif;margin-bottom:6px;background:linear-gradient(90deg,var(--red),var(--gold),#fff,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
 .pbody p{font-size:.88rem;color:var(--mut);text-align:justify;text-align-last:center;margin-bottom:12px}
-.price{margin-top:auto;font:800 1.4rem Sora,sans-serif;color:var(--gold)}
+.price{margin-top:auto;font:800 1.rem Sora,sans-serif;color:var(--gold)}
 
 
 /* ---------- LOCATION MAP ---------- */
@@ -285,7 +285,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.09);
   border: 1px solid rgba(255, 255, 255, 0.24);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.);
 }
 
 .map-container iframe {
@@ -309,7 +309,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   background: linear-gradient(90deg, #ffd60a, #1fd66b);
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.s;
 }
 
 .map-link a:hover {
@@ -331,28 +331,28 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
 
 <aside class="side l" aria-hidden="true"><div class="track">
-    <div class="ph"><img src="pictures2/awarding-mr.um.jpg" alt="Awarding Mr.UM"></div>
-    <div class="ph"><img src="pictures2/cs-officers.jpg" alt="CS Officers"></div>
-    <div class="ph"><img src="pictures2/cs-jap-costal-cleandrive.jpg" alt="Costal Cleandrive"></div>
-    <div class="ph"><img src="pictures2/um-prof-faculty.jpg" alt="UM PROFESSORS AND STAFF"></div>
-    <div class="ph"><img src="pictures2/nstp-csprof.jpg" alt="NSTP CWTS with CS PROFESSORS"></div>
-    <div class="ph"><img src="pictures2/um-fam.jpg" alt="UM Family"></div>
-    <div class="ph"><img src="pictures2/cs-jap-fieldtrip.jpg" alt="CS JAP FIELD"></div>
-    <div class="ph"><img src="pictures2/cs-prof-in-jap-event.jpg" alt="CS Prof in Jap Event"></div>
-    <div class="ph"><img src="pictures2/cosplay-comp-champion.jpg" alt="CS Student Champion Cosplay Competion"></div>
-    <div class="ph"><img src="pictures2/um-113th.jpg" alt="UM Event"></div>
+    <div class="ph"><img src="./awarding-mr.um.jpg" alt="Awarding Mr.UM"></div>
+    <div class="ph"><img src="./cs-officers.jpg" alt="CS Officers"></div>
+    <div class="ph"><img src="./cs-jap-costal-cleandrive.jpg" alt="Costal Cleandrive"></div>
+    <div class="ph"><img src="./um-prof-faculty.jpg" alt="UM PROFESSORS AND STAFF"></div>
+    <div class="ph"><img src="./nstp-csprof.jpg" alt="NSTP CWTS with CS PROFESSORS"></div>
+    <div class="ph"><img src="./um-fam.jpg" alt="UM Family"></div>
+    <div class="ph"><img src="./cs-jap-fieldtrip.jpg" alt="CS JAP FIELD"></div>
+    <div class="ph"><img src="./cs-prof-in-jap-event.jpg" alt="CS Prof in Jap Event"></div>
+    <div class="ph"><img src="./cosplay-comp-champion.jpg" alt="CS Student Champion Cosplay Competion"></div>
+    <div class="ph"><img src="./um-113th.jpg" alt="UM Event"></div>
 </div></aside>
 <aside class="side r" aria-hidden="true"><div class="track rev">
-    <div class="ph"><img src="pictures2/supportive-cs.jpg" alt="Supportive CS Family"></div>
-    <div class="ph"><img src="pictures2/cs-2025.jpg" alt="CS 2025"></div>
-    <div class="ph"><img src="pictures2/cs-prof-with-2other-prof.jpg" alt="CS Professor and 2 other professor"></div>
-    <div class="ph"><img src="pictures2/1st-year-sabayang-pagbigkas.jpg" alt="1st Year Sabayang Pagbigkas"></div>
-    <div class="ph"><img src="pictures2/2024-cheerdance-champion.jpg" alt="2024 Cheerdance Champion"></div>
-    <div class="ph"><img src="pictures2/cs-sabayang-pagbagsak.jpg" alt="Sabayang Pagbagsak haha"></div>
-    <div class="ph"><img src="pictures2/miss-intrams-2025.jpg" alt="Miss Intramurals 2025"></div>
-    <div class="ph"><img src="pictures2/cs-students-2025.jpg" alt="CS ACQUAINTANCE"></div>
-    <div class="ph"><img src="pictures2/cs-vb-mens.jpg" alt="CS VOLLEYBALL MENS"></div>
-    <div class="ph"><img src="pictures2/cs-vb-womens.jpg" alt="Costal Cleandrive"></div>
+    <div class="ph"><img src="./supportive-cs.jpg" alt="Supportive CS Family"></div>
+    <div class="ph"><img src="./cs-2025.jpg" alt="CS 2025"></div>
+    <div class="ph"><img src="./cs-prof-with-2other-prof.jpg" alt="CS Professor and 2 other professor"></div>
+    <div class="ph"><img src="./1st-year-sabayang-pagbigkas.jpg" alt="1st Year Sabayang Pagbigkas"></div>
+    <div class="ph"><img src="./2024-cheerdance-champion.jpg" alt="2024 Cheerdance Champion"></div>
+    <div class="ph"><img src="./cs-sabayang-pagbagsak.jpg" alt="Sabayang Pagbagsak haha"></div>
+    <div class="ph"><img src="./miss-intrams-2025.jpg" alt="Miss Intramurals 2025"></div>
+    <div class="ph"><img src="./cs-students-2025.jpg" alt="CS ACQUAINTANCE"></div>
+    <div class="ph"><img src="./cs-vb-mens.jpg" alt="CS VOLLEYBALL MENS"></div>
+    <div class="ph"><img src="./cs-vb-womens.jpg" alt="Costal Cleandrive"></div>
 </div></aside>
 <!-- Blurred university photo + shade + glowing orbs (background layers) -->
 <div class="bg"></div><div class="shade"></div><div class="orb o1"></div><div class="orb o2"></div>
@@ -364,11 +364,11 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 <header>
   <div class="head glass">
  
-    <div class="logo"><img src="pictures/um-logo.jpg" alt="UM LOGO"></div>
+    <div class="logo"><img src="./um-logo.jpg" alt="UM LOGO"></div>
     <!-- CENTER title -->
     <h1><b>THE UNIVERSITY OF MANILA</b></h1>
  
-    <div class="logo"><img src="pictures/cs-logo.jpg" alt="CS LOGO"></div>
+    <div class="logo"><img src="./cs-logo.jpg" alt="CS LOGO"></div>
   </div>
 </header>
 
@@ -405,13 +405,13 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   <h2 class="rv">University <em>of Manila</em></h2>
   <p class="lead rv">Moving beyond excellence.</p>
 
-  <!-- PICTURES  -->
+  <!-- .  -->
   <div class="rv">
-    <div class="ph" style="height:320px"><img src="pictures2/um-gym-building.jpg" alt="UM Building"></div>
+    <div class="ph" style="height:320px"><img src=".2/um-gym-building.jpg" alt="UM Building"></div>
     <div class="gal">
-      <div class="ph"><img src="pictures2/um-programs-students.jpg" alt="University Of Manila Programs"></div>
-      <div class="ph"><img src="pictures2/um-stage.jpg" alt="UM Stage"></div>
-      <div class="ph"><img src="pictures2/um-fam.jpg" alt="UM Family"></div>
+      <div class="ph"><img src="./um-programs-students.jpg" alt="University Of Manila Programs"></div>
+      <div class="ph"><img src="./um-stage.jpg" alt="UM Stage"></div>
+      <div class="ph"><img src="./um-fam.jpg" alt="UM Family"></div>
     </div>
   </div>
   <!-- HISTORY -->
@@ -505,7 +505,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3>COMPUTER SCIENCE AI ADS VIDEO PRESENTATION</h3>
     <div class="frame">
       <video controls preload="metadata">
-        <source src="video/BSCS-AIPRESENTATION.mp4" type="video/mp4">
+        <source src="./BSCS-AIPRESENTATION.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -516,15 +516,15 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
  
   <div class="cen" style="margin-bottom:22px">
-    <div class="pc glass rv"><div class="ph"><img src="pictures/rogelio-plaza-jr.jpg" alt="Rogelio Plaza Jr."></div><div class="pt"><h3>Professor Rogelio Plaza Jr.</h3><p>A faculty member of the University of Manila, where he contributes to the academic development and learning experience of students. Through his role as an educator, he helps students build a stronger understanding of their subjects while encouraging them to develop discipline, critical thinking, and problem-solving skills.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="./rogelio-plaza-jr.jpg" alt="Rogelio Plaza Jr."></div><div class="pt"><h3>Professor Rogelio Plaza Jr.</h3><p>A faculty member of the University of Manila, where he contributes to the academic development and learning experience of students. Through his role as an educator, he helps students build a stronger understanding of their subjects while encouraging them to develop discipline, critical thinking, and problem-solving skills.</p></div></div>
   </div>
 
 
   <div class="cen">
-    <div class="pc glass rv"><div class="ph"><img src="pictures/joselito-borces.jpg" alt="Joselito Borces"></div><div class="pt"><h3>Professor Joselito Borces</h3><p>With a deep passion for technology and a commitment to academic excellence, Prof. Joselito Borces represents the knowledge, dedication, and expertise that continue to shape the field of Computer Science. His specialization in Computer Hardware reflects a strong understanding of computer components, system architecture, processors, memory, storage, input/output devices, and hardware troubleshooting.</p></div></div>
-    <div class="pc glass rv"><div class="ph"><img src="pictures/marjorie-borces.jpg" alt="Marjorie Borces"></div><div class="pt"><h3>Professor Marjorie Borces</h3><p>With a deep passion for education and a commitment to student success, she represents the knowledge, generosity, and dedication that continue to inspire learners in the field of Computer Science. Her intelligence, supportive nature, and willingness to guide students reflect her genuine commitment to academic excellence, personal growth, and creating a positive learning environment.</p></div></div>
-    <div class="pc glass rv"><div class="ph"><img src="pictures/rochelle-fallorina.jpg" alt="Rochelle Fallorina"></div><div class="pt"><h3>Professor Rochelle Anne Fallorina</h3><p>She served as a dedicated educator at The University of Manila, inspiring students through her passion for teaching and commitment to learning. She uses a hands-on approach to make complex lessons in Computer Science and Japanology easier to understand and apply. Her patience, expertise, and genuine care create an engaging learning environment that encourages students to develop their knowledge, build confidence, and achieve their full potential.</p></div></div>
-    <div class="pc glass rv"><div class="ph"><img src="pictures/stanley-verde.jpg" alt="Stanley Verde"></div><div class="pt"><h3>Professor Stanley Verde</h3><p>He served as a dedicated educator at the University of Manila. He brings real-world knowledge and practical insights to the classroom, helping students connect theory with actual industry applications. His expertise includes core Computer Science subjects such as programming, data structures and algorithms, computer systems, and software development. He also has a strong understanding of emerging technologies and their applications in real-world scenarios.
+    <div class="pc glass rv"><div class="ph"><img src="./joselito-borces.jpg" alt="Joselito Borces"></div><div class="pt"><h3>Professor Joselito Borces</h3><p>With a deep passion for technology and a commitment to academic excellence, Prof. Joselito Borces represents the knowledge, dedication, and expertise that continue to shape the field of Computer Science. His specialization in Computer Hardware reflects a strong understanding of computer components, system architecture, processors, memory, storage, input/output devices, and hardware troubleshooting.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="./marjorie-borces.jpg" alt="Marjorie Borces"></div><div class="pt"><h3>Professor Marjorie Borces</h3><p>With a deep passion for education and a commitment to student success, she represents the knowledge, generosity, and dedication that continue to inspire learners in the field of Computer Science. Her intelligence, supportive nature, and willingness to guide students reflect her genuine commitment to academic excellence, personal growth, and creating a positive learning environment.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="./rochelle-fallorina.jpg" alt="Rochelle Fallorina"></div><div class="pt"><h3>Professor Rochelle Anne Fallorina</h3><p>She served as a dedicated educator at The University of Manila, inspiring students through her passion for teaching and commitment to learning. She uses a hands-on approach to make complex lessons in Computer Science and Japanology easier to understand and apply. Her patience, expertise, and genuine care create an engaging learning environment that encourages students to develop their knowledge, build confidence, and achieve their full potential.</p></div></div>
+    <div class="pc glass rv"><div class="ph"><img src="./stanley-verde.jpg" alt="Stanley Verde"></div><div class="pt"><h3>Professor Stanley Verde</h3><p>He served as a dedicated educator at the University of Manila. He brings real-world knowledge and practical insights to the classroom, helping students connect theory with actual industry applications. His expertise includes core Computer Science subjects such as programming, data structures and algorithms, computer systems, and software development. He also has a strong understanding of emerging technologies and their applications in real-world scenarios.
 </p></div></div>
   </div>
 </div></section>
@@ -538,58 +538,58 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
   
   <div class="cen" id="newsGrid">
-    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span><div class="ph"><img src="pictures2/mr-um-3rdplace-2026.jpg" alt="MR UNIVERSITY OF MANILA 2ND 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span></div></div>
-        <div class="n glass hl rv"><span class="yr">MODERN DANCE CHAMPION 2026</span><div class="ph"><img src="pictures2/cs-modern-dance-2026-champion.jpg" alt="MODERN DANCE CHAMPION 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA 3RD PLACE 2026</span><div class="ph"><img src="pictures2/cs-3rdplace-buwan-ng-wika.jpg" alt="BUWAN NG WIKA 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA FESTIVAL 3RD PLACE 2026</span><div class="ph"><img src="pictures2/3rd-place-buwan-ng-wika-festival-2026.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA FESTIVAL 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">1ST PLACE IN CHEEREDANCE 2026</span><div class="ph"><img src="pictures2/1st-place-cheerdance-2026.jpg" alt="CS 1st PLACE in CHEERDANCE  2026"/></b></div><div class="t"><span class="tag g">1ST PLACE IN CHEEREDANCE 2026 </span></div></div>
-        <div class="n glass hl rv"><span class="yr">MR INTRAMURALS 2026</span><div class="ph"><img src="pictures2/mr-intramurals-2026.jpg" alt="MR INTRAMURALS 2026"/></b></div><div class="t"><span class="tag">MR INTRAMS</span></div></div> 
-    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2026</span><div class="ph"><img src="pictures2/cs-best-in-jersey-2026.jpg" alt="BEST IN JERSEY 2026"/></b></div><div class="t"><span class="tag g">BEST IN JERSEY 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA WINNER 2025</span><div class="ph"><img src="pictures2/awarding-mr.um.jpg" alt="MR UNIVERSITY OF MANILA 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA WINNER 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">MISS & MR INTRAMURALS 2025</span><div class="ph"><img src="pictures2/cs-miss-intrams-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">MISS INTRAMS</span></div></div> 
-    <div class="n glass hl rv"><span class="yr">BEST IN COSTUME 2025</span><div class="ph"><img src="pictures2/cs-trophy-cheerdance.jpg" alt="CS BEST IN COSTUME 2025"/>5</b></div><div class="t"><span class="tag">COMSCIE WON BEST IN COSTUME CHEERDANCE 2025</span></div></div>
-    <div class="n glass hl rv"><span class="yr">CHEERDANCE CHAMPION 2025</span><div class="ph"><img src="pictures2/cs-champion-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></svg><b class="nm">COMSCIE CHAMPION CHEERDANCE 2025</b></div><div class="t"><span class="tag g">BEST IN COSTUME</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2025</span><div class="ph"><img src="pictures2/cs-best-in-jersey-2025.jpg" alt="CS BEST IN JERSEY 2025"/></b></div><div class="t"><span class="tag">BEST IN JERSEY 2025</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span><div class="ph"><img src=".2/mr-um-3rdplace-2026.jpg" alt="MR UNIVERSITY OF MANILA 2ND 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span></div></div>
+        <div class="n glass hl rv"><span class="yr">MODERN DANCE CHAMPION 2026</span><div class="ph"><img src=".2/cs-modern-dance-2026-champion.jpg" alt="MODERN DANCE CHAMPION 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA 3RD PLACE 2026</span><div class="ph"><img src=".2/cs-3rdplace-buwan-ng-wika.jpg" alt="BUWAN NG WIKA 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA FESTIVAL 3RD PLACE 2026</span><div class="ph"><img src=".2/3rd-place-buwan-ng-wika-festival-2026.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA FESTIVAL 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">1ST PLACE IN CHEEREDANCE 2026</span><div class="ph"><img src=".2/1st-place-cheerdance-2026.jpg" alt="CS 1st PLACE in CHEERDANCE  2026"/></b></div><div class="t"><span class="tag g">1ST PLACE IN CHEEREDANCE 2026 </span></div></div>
+        <div class="n glass hl rv"><span class="yr">MR INTRAMURALS 2026</span><div class="ph"><img src=".2/mr-intramurals-2026.jpg" alt="MR INTRAMURALS 2026"/></b></div><div class="t"><span class="tag">MR INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2026</span><div class="ph"><img src=".2/cs-best-in-jersey-2026.jpg" alt="BEST IN JERSEY 2026"/></b></div><div class="t"><span class="tag g">BEST IN JERSEY 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA WINNER 2025</span><div class="ph"><img src=".2/awarding-mr.um.jpg" alt="MR UNIVERSITY OF MANILA 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA WINNER 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MISS & MR INTRAMURALS 2025</span><div class="ph"><img src=".2/cs-miss-intrams-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">MISS INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN COSTUME 2025</span><div class="ph"><img src=".2/cs-trophy-cheerdance.jpg" alt="CS BEST IN COSTUME 2025"/>5</b></div><div class="t"><span class="tag">COMSCIE WON BEST IN COSTUME CHEERDANCE 2025</span></div></div>
+    <div class="n glass hl rv"><span class="yr">CHEERDANCE CHAMPION 2025</span><div class="ph"><img src=".2/cs-champion-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></svg><b class="nm">COMSCIE CHAMPION CHEERDANCE 2025</b></div><div class="t"><span class="tag g">BEST IN COSTUME</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2025</span><div class="ph"><img src=".2/cs-best-in-jersey-2025.jpg" alt="CS BEST IN JERSEY 2025"/></b></div><div class="t"><span class="tag">BEST IN JERSEY 2025</span></div></div>
   </div>
 
     <!-- UM EVENTS -->
   <h3 class="sub rv" style="margin-top:72px">UNIVERSITY OF MANILA EVENTS</h3>
   <div class="cen">
     <div class="n glass hl rv gal-group">
-      <div class="ph"><img src="pictures4/um-event-1.jpg" alt="Happy 113th Foundation Day University Of Manila!"></div>
+      <div class="ph"><img src="./um-event-1.jpg" alt="Happy 113th Foundation Day University Of Manila!"></div>
       <div class="more-imgs">
-        <img src="pictures4/um-event-2.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-3.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-4.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-5.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-6.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-7.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-8.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-9.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-10.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-11.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-12.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-13.jpg" alt="Happy 113th Foundation Day University Of Manila!">
-        <img src="pictures4/um-event-14.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-2.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-3.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-4.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-5.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-6.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-7.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-8.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-9.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-10.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-11.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-12.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-13.jpg" alt="Happy 113th Foundation Day University Of Manila!">
+        <img src="./um-event-14.jpg" alt="Happy 113th Foundation Day University Of Manila!">
       </div>
       <div class="t"><span class="tag">UM EVENT</span><h3>MR. & MS. UNIVERSITY OF MANILA 2026</h3><p class="when">October 1</p></div>
     </div>
     <div class="n glass hl rv gal-group">
-      <div class="ph"><img src="pictures4/mrms-um-2026-1.jpg" alt=""></div>
+      <div class="ph"><img src="./mrms-um-2026-1.jpg" alt=""></div>
       <div class="more-imgs">
-        <img src="pictures4/mrms-um-2026-2.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-3.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-4.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-5.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-6.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-7.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-8.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-9.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-10.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-11.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-12.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-13.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
-        <img src="pictures4/mrms-um-2026-14.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-2.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-3.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-4.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-5.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-6.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-7.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-8.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-9.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-10.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-11.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-12.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-13.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
+        <img src="./mrms-um-2026-14.jpg" alt="MR. & MS. UNIVERSITY OF MANILA 2026">
       </div>
       <div class="t"><span class="tag g">UNIVERSITY OF MANILA EVENT</span><h3>EVENT NAME</h3><p class="when">2026</p></div>
     </div>
@@ -601,34 +601,34 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   <h3 class="sub rv" style="margin-top:60px">COMPUTER SCIENCE EVENTS</h3>
   <div class="cen">
     <div class="n glass hl rv gal-group">
-      <div class="ph"><img src="pictures4/cs-acquaintance-party-1.jpg" alt="Acquaintance Party 2026 "></div>
+      <div class="ph"><img src="./cs-acquaintance-party-1.jpg" alt="Acquaintance Party 2026 "></div>
       <div class="more-imgs">
-        <img src="pictures4/cs-acquaintance-party-2.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-3.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-4.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-5.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-6.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-7.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-8.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-9.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-10.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-11.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-12.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-13.jpg" alt="Acquaintance Party 2026">
-        <img src="pictures4/cs-acquaintance-party-14.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-2.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-3.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-4.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-5.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-6.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-7.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-8.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-9.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-10.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-11.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-12.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-13.jpg" alt="Acquaintance Party 2026">
+        <img src="./cs-acquaintance-party-14.jpg" alt="Acquaintance Party 2026">
       </div>
       <div class="t"><span class="tag g">COMPUTER SCIENCE EVENT</span><h3>ACQUAINTANCE PARTY</h3><p class="when">2026</p></div>
     </div>
     <div class="n glass hl rv gal-group">
-      <div class="ph"><img src="pictures4/cs-sportfest-1.jpg" alt="Computer Science Sportfest 2026 "></div>
+      <div class="ph"><img src="./cs-sportfest-1.jpg" alt="Computer Science Sportfest 2026 "></div>
       <div class="more-imgs">
-        <img src="pictures4/cs-sportfest-2.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-3.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-4.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-5.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-6.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-7.jpg" alt="Computer Science Sportfest 2026">
-        <img src="pictures4/cs-sportfest-8.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-2.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-3.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-4.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-5.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-6.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-7.jpg" alt="Computer Science Sportfest 2026">
+        <img src="./cs-sportfest-8.jpg" alt="Computer Science Sportfest 2026">
       
       </div>
       <div class="t"><span class="tag g">COMPUTER SCIENCE EVENT</span><h3>COMPUTER SCIENCE SPORTFEST 2026</h3><p class="when">2026</p></div>
@@ -645,18 +645,18 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   
   <div class="tm-top">
     <div class="pc glass rv">
-      <div class="ph"><img src="pictures/andrea-criszandra-cortez.jpg" alt="Andrea Criszandra Cortez"></div>
+      <div class="ph"><img src="./andrea-criszandra-cortez.jpg" alt="Andrea Criszandra Cortez"></div>
       <div class="pt">
         <h3>ANDREA CRISZANDRA CORTEZ</h3>
         <ul class="info">
-          <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ilang-Ilang Pandacan Manila, Philippines</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0997-229-4548</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2."/></svg>Ilang-Ilang Pandacan Manila, Philippines</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2. 1.a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0997-229-4548</li>
           <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>szandracortez09@gmail.com</li>
-          <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>01/20/2003</li>
-          <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Gaming, Cosplaying, Collecting Toys, Singing.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1. 4 1. 6 0s4-1. 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1. 1.2 2.6 0 3.-1.2-.9-1.2-2.1 0-3.z"/></svg>01/20/2003</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.-7 10-7 10z"/></svg>Gaming, Cosplaying, Collecting Toys, Singing.</li>
           <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"If you're not a good shot today, don't worry. There are other ways to be useful"</li>
         </ul>
-        <a class="resume" href="resumes/andrea-criszandra-cortez.pdf" target="_blank" rel="noopener">VIEW RESUME</a>
+        <a class="resume" href="./andrea-criszandra-cortez.pdf" target="_blank" rel="noopener">VIEW RESUME</a>
       </div>
     </div>
   </div>
@@ -664,52 +664,52 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   
   <div class="tm-grid">
     <!-- ===== CHERRY JANE CABOTAJE ===== -->
-    <div class="pc glass rv"><div class="ph"><img src="pictures/cherry-jane-cabotaje.jpg" alt="Cherry Jane Cabotaje"></div><div class="pt"><h3>CHERRY JANE CABOTAJE</h3>
+    <div class="pc glass rv"><div class="ph"><img src="./cherry-jane-cabotaje.jpg" alt="Cherry Jane Cabotaje"></div><div class="pt"><h3>CHERRY JANE CABOTAJE</h3>
       <ul class="info">
-        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>778 Finest Legacy Suites San Sebastian Quiapo Manila</li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0938-388-8104</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2."/></svg>778 Finest Legacy Suites San Sebastian Quiapo Manila</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2. 1.a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0938-388-8104</li>
                   <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>chrryjn20@gmail.com</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>03/20/2006</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Singing, chess and do a 24hrs of sleeping.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1. 4 1. 6 0s4-1. 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1. 1.2 2.6 0 3.-1.2-.9-1.2-2.1 0-3.z"/></svg>03/20/2006</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.-7 10-7 10z"/></svg>Singing, chess and do a 24hrs of sleeping.</li>
         <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Freedom is the oxygen of the soul"</li>
       </ul>
-      <a class="resume" href="resumes/cherry-jane-cabotaje.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+      <a class="resume" href="./cherry-jane-cabotaje.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
 
     <!-- ===== JHON PATRICK DARAUAY ===== -->
-    <div class="pc glass rv"><div class="ph"><img src="pictures/jhon-patrick-darauay.jpg" alt="Jhon Patrick Darauay"></div><div class="pt"><h3>JHON PATRICK DARAUAY</h3>
+    <div class="pc glass rv"><div class="ph"><img src="./jhon-patrick-darauay.jpg" alt="Jhon Patrick Darauay"></div><div class="pt"><h3>JHON PATRICK DARAUAY</h3>
       <ul class="info">
-        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>39 Capoas St. Masambong Quezon City</li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0993-851-2458</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2."/></svg>39 Capoas St. Masambong Quezon City</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2. 1.a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0993-851-2458</li>
          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>jhonpatrickdarauay10@gmail.com</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>10/05/2005</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Watch Motorsport Racing, Car Spotting, Music and Walking.</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1. 4 1. 6 0s4-1. 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1. 1.2 2.6 0 3.-1.2-.9-1.2-2.1 0-3.z"/></svg>10/05/2005</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.-7 10-7 10z"/></svg>Watch Motorsport Racing, Car Spotting, Music and Walking.</li>
         <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"A man's ambition should never exceed his worth"</li>
       </ul>
-      <a class="resume" href="resumes/jhon-patrick-darauay.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+      <a class="resume" href="./jhon-patrick-darauay.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
 
     <!-- ===== LLOYD ANDERSON CATAHUMBER ===== -->
-    <div class="pc glass rv"><div class="ph"><img src="pictures/lloyd-anderson-catahumber.jpg" alt="Lloyd Anderson Catahumber"></div><div class="pt"><h3>LLOYD ANDERSON CATAHUMBER</h3>
+    <div class="pc glass rv"><div class="ph"><img src="./lloyd-anderson-catahumber.jpg" alt="Lloyd Anderson Catahumber"></div><div class="pt"><h3>LLOYD ANDERSON CATAHUMBER</h3>
       <ul class="info">
-        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>564 B Main street sampaloc manila</li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>09911713673</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2."/></svg>564 B Main street sampaloc manila</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2. 1.a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>09911713673</li>
                  <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>dyollnosredna@gmail.com</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>11/13/1999</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Arts and Crafts, Watching Anime</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1. 4 1. 6 0s4-1. 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1. 1.2 2.6 0 3.-1.2-.9-1.2-2.1 0-3.z"/></svg>11/13/1999</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.-7 10-7 10z"/></svg>Arts and Crafts, Watching Anime</li>
         <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Its never too late"</li>
       </ul>
-      <a class="resume" href="resumes/lloyd-anderson-catahumber.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+      <a class="resume" href="./lloyd-anderson-catahumber.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
 
     <!-- ===== IVY DANIELLE CAYABYAB ===== -->
-    <div class="pc glass rv"><div class="ph"><img src="pictures/ivy-danielle-cayabyab.jpg" alt="Ivy Danielle Cayabyab"></div><div class="pt"><h3>IVY DANIELLE CAYABYAB</h3>
+    <div class="pc glass rv"><div class="ph"><img src="./ivy-danielle-cayabyab.jpg" alt="Ivy Danielle Cayabyab"></div><div class="pt"><h3>IVY DANIELLE CAYABYAB</h3>
       <ul class="info">
-        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>79-1 V.A.B Pasay City</li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0945-340-7093</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2."/></svg>79-1 V.A.B Pasay City</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2. 1.a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>0945-340-7093</li>
                 <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>ivydaniellecc@gmail.com</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1.4 1.2 2.6 0 3.5-1.2-.9-1.2-2.1 0-3.5z"/></svg>09/15/2005</li>
-        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.4-7 10-7 10z"/></svg>Walking, Singing, Sketching</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 20h16v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6z"/><path d="M4 16c2 1. 4 1. 6 0s4-1. 6 0 3 1 4 0"/><path d="M12 12V9"/><path d="M12 3c1.2 1. 1.2 2.6 0 3.-1.2-.9-1.2-2.1 0-3.z"/></svg>09/15/2005</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.-7 10-7 10z"/></svg>Walking, Singing, Sketching</li>
         <li class="motto"><svg viewBox="0 0 24 24"><path d="M7 9h4v4a3 3 0 01-3 3M14 9h4v4a3 3 0 01-3 3"/></svg>"Do your best and Love well"</li>
       </ul>
-      <a class="resume" href="resumes/ivy-danielle-cayabyab.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
+      <a class="resume" href="./ivy-danielle-cayabyab.pdf" target="_blank" rel="noopener">VIEW RESUME</a></div></div>
   </div>
 </div></section>
 
@@ -725,37 +725,37 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3 class="fname">Andrea Criszandra Cortez</h3>
     <div class="frow">
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/dea-fam-pic-1.jpg" alt="My Sisters Wedding Day (I was at my school)"></div>
+        <div class="ph"><img src="./dea-fam-pic-1.jpg" alt="My Sisters Wedding Day (I was at my school)"></div>
         <div class="more-imgs">
-          <img src="pictures3/dea-fam-pic-2.jpg" alt="Christmas Celebration">
-          <img src="pictures3/dea-fam-pic-3.jpg" alt="Gala with Fam, Kain + Kanta = Happy Life">
-          <img src="pictures3/dea-fam-pic-4.jpg" alt="Different Kinds of Love, One Happy Heart. I love you both always~">
-          <img src="pictures3/dea-fam-pic-5.jpg" alt="with my half sister and whole young brother(?) haha">
-          <img src="pictures3/dea-fam-pic-6.jpg" alt="Aunties 60th Birthday, Thanks for taking care of me">
-          <img src="pictures3/dea-fam-pic-7.jpg" alt="Family pic, Insert Ate Cricket, idk where she is that time.">
-          <img src="pictures3/dea-fam-pic-8.jpg" alt="Thank you Espiritu Family for loving me as your real family. I love you all~">
+          <img src="./dea-fam-pic-2.jpg" alt="Christmas Celebration">
+          <img src="./dea-fam-pic-3.jpg" alt="Gala with Fam, Kain + Kanta = Happy Life">
+          <img src="./dea-fam-pic-4.jpg" alt="Different Kinds of Love, One Happy Heart. I love you both always~">
+          <img src="./dea-fam-pic-5.jpg" alt="with my half sister and whole young brother(?) haha">
+          <img src="./dea-fam-pic-6.jpg" alt="Aunties 60th Birthday, Thanks for taking care of me">
+          <img src="./dea-fam-pic-7.jpg" alt="Family pic, Insert Ate Cricket, idk where she is that time.">
+          <img src="./dea-fam-pic-8.jpg" alt="Thank you Espiritu Family for loving me as your real family. I love you all~">
           
         </div>
         <h4>Family</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/dea-friend-1.jpg" alt="Me and My Twin"></div>
+        <div class="ph"><img src="./dea-friend-1.jpg" alt="Me and My Twin"></div>
         <div class="more-imgs">
-          <img src="pictures3/dea-friend-2.jpg" alt="My School Friends">
-          <img src="pictures3/dea-friend-3.jpg" alt="Mark my Bestie">
-          <img src="pictures3/dea-friend-4.jpg" alt="I miss them so much especially Marie-sama I hope you are happy and have a peaceful soul in the other side">
-          <img src="pictures3/dea-friend-5.jpg" alt="Senior High Bestie">
-          <img src="pictures3/dea-friend-6.jpg" alt="The Pinky Up">
+          <img src="./dea-friend-2.jpg" alt="My School Friends">
+          <img src="./dea-friend-3.jpg" alt="Mark my Bestie">
+          <img src="./dea-friend-4.jpg" alt="I miss them so much especially Marie-sama I hope you are happy and have a peaceful soul in the other side">
+          <img src="./dea-friend-5.jpg" alt="Senior High Bestie">
+          <img src="./dea-friend-6.jpg" alt="The Pinky Up">
         </div>
         <h4>Friends</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/dea-bf-1.jpg" alt="The Person I love the most, My Kuro the Goofiest Subibi"></div>
+        <div class="ph"><img src="./dea-bf-1.jpg" alt="The Person I love the most, My Kuro the Goofiest Subibi"></div>
         <div class="more-imgs">
-          <img src="pictures3/dea-bf-2.jpg" alt="YESSSSSS I DOOOOOOOO!!">
-          <img src="pictures3/dea-bf-3.jpg" alt="Yes, Foodtrip Date at Fussion Alley. How about Gym Date?!">
-          <img src="pictures3/dea-bf-4.jpg" alt="Spending too much money for ourselves not for Milk and Diaper haha!">
-          <img src="pictures3/dea-bf-5.jpg" alt="The two Goofy Subibis.">
+          <img src="./dea-bf-2.jpg" alt="YESSSSSS I DOOOOOOOO!!">
+          <img src="./dea-bf-3.jpg" alt="Yes, Foodtrip Date at Fussion Alley. How about Gym Date?!">
+          <img src="./dea-bf-4.jpg" alt="Spending too much money for ourselves not for Milk and Diaper haha!">
+          <img src="./dea-bf-5.jpg" alt="The two Goofy Subibis.">
         </div>
         <h4>Partner</h4>
       </div>
@@ -767,34 +767,34 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3 class="fname">Cherry Jane Cabotaje</h3>
     <div class="frow">
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/cherry-fam-1.jpg" alt="eeeeey swabe lang kami."></div>
+        <div class="ph"><img src="./cherry-fam-1.jpg" alt="eeeeey swabe lang kami."></div>
         <div class="more-imgs">
-          <img src="pictures3/cherry-fam-2.jpg" alt="I love Mayo's Family.">
-          <img src="pictures3/cherry-fam-3.jpg" alt="Cute namin pati height cute.">
-          <img src="pictures3/cherry-fam-4.jpg" alt="eeeey! panahong mapera pa pamilya ko">
-          <img src="pictures3/cherry-fam-5.jpg" alt="yeeeeheeeey.">
-          <img src="pictures3/cherry-fam-6.jpg" alt="sana sunod ako ikasal">
-          <img src="pictures3/cherry-fam-7.jpg" alt="complete kami ng pamilya ko hehe">
+          <img src="./cherry-fam-2.jpg" alt="I love Mayo's Family.">
+          <img src="./cherry-fam-3.jpg" alt="Cute namin pati height cute.">
+          <img src="./cherry-fam-4.jpg" alt="eeeey! panahong mapera pa pamilya ko">
+          <img src="./cherry-fam-5.jpg" alt="yeeeeheeeey.">
+          <img src="./cherry-fam-6.jpg" alt="sana sunod ako ikasal">
+          <img src="./cherry-fam-7.jpg" alt="complete kami ng pamilya ko hehe">
         </div>
         <h4>Family</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/cherry-friends-1.jpg" alt="bakit matatakot sa multo naging multo kaba ng oppurtunities na di ko nasubokan?."></div>
+        <div class="ph"><img src="./cherry-friends-1.jpg" alt="bakit matatakot sa multo naging multo kaba ng oppurtunities na di ko nasubokan?."></div>
         <div class="more-imgs">
-          <img src="pictures3/cherry-friends-2.jpg" alt="DI love my high school classmates">
-          <img src="pictures3/cherry-friends-3.jpg" alt="may sumpa sa trio.">
-          <img src="pictures3/cherry-friends-4.jpg" alt="sheeeeesh parang mga bato.">
-          <img src="pictures3/cherry-friends-5.jpg" alt="ganyan kapag sahod day.">
+          <img src="./cherry-friends-2.jpg" alt="DI love my high school classmates">
+          <img src="./cherry-friends-3.jpg" alt="may sumpa sa trio.">
+          <img src="./cherry-friends-4.jpg" alt="sheeeeesh parang mga bato.">
+          <img src="./cherry-friends-5.jpg" alt="ganyan kapag sahod day.">
         </div>
         <h4>Friends</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/cherry-partner-1.jpg" alt="ay nagsleep si bossing"></div>
+        <div class="ph"><img src="./cherry-partner-1.jpg" alt="ay nagsleep si bossing"></div>
         <div class="more-imgs">
-          <img src="pictures3/cherry-partner-2.jpg" alt="sana ma-headlock">
-          <img src="pictures3/cherry-partner-3.jpg" alt="pogi ng asawa ko">
-          <img src="pictures3/cherry-partner-4.jpg" alt="yown">
-          <img src="pictures3/cherry-partner-5.jpg" alt="mahal kita kahit nasa palawan ka">
+          <img src="./cherry-partner-2.jpg" alt="sana ma-headlock">
+          <img src="./cherry-partner-3.jpg" alt="pogi ng asawa ko">
+          <img src="./cherry-partner-4.jpg" alt="yown">
+          <img src="./cherry-partner-5.jpg" alt="mahal kita kahit nasa palawan ka">
         </div>
         <h4>Partner</h4>
       </div>
@@ -806,32 +806,32 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3 class="fname">Ivy Danielle Cayabyab</h3>
     <div class="frow">
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/ivy-fam-1.jpg" alt="Forever my favorite people."></div>
+        <div class="ph"><img src="./ivy-fam-1.jpg" alt="Forever my favorite people."></div>
         <div class="more-imgs">
-          <img src="pictures3/ivy-fam-2.jpg" alt="No matter what, always family.">
-          <img src="pictures3/ivy-fam-3.jpg" alt="My first home and forever comfort.">
-          <img src="pictures3/ivy-fam-4.jpg" alt="My reason and my strength.">
-          <img src="pictures3/ivy-fam-5.jpg" alt="My greatest blessing.">
+          <img src="./ivy-fam-2.jpg" alt="No matter what, always family.">
+          <img src="./ivy-fam-3.jpg" alt="My first home and forever comfort.">
+          <img src="./ivy-fam-4.jpg" alt="My reason and my strength.">
+          <img src="./ivy-fam-5.jpg" alt="My greatest blessing.">
         </div>
         <h4>Family</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/ivy-friends-1.jpg" alt="Life is better with these people around."></div>
+        <div class="ph"><img src="./ivy-friends-1.jpg" alt="Life is better with these people around."></div>
         <div class="more-imgs">
-          <img src="pictures3/ivy-friends-2.jpg" alt="Little moments, unforgettable memories.">
-          <img src="pictures3/ivy-friends-3.jpg" alt="Good friends, good times, good memories.">
-          <img src="pictures3/ivy-friends-4.jpg" alt="My kind of people.">
-          <img src="pictures3/ivy-friends-5.jpg" alt="Life is better with you all.">
+          <img src="./ivy-friends-2.jpg" alt="Little moments, unforgettable memories.">
+          <img src="./ivy-friends-3.jpg" alt="Good friends, good times, good memories.">
+          <img src="./ivy-friends-4.jpg" alt="My kind of people.">
+          <img src="./ivy-friends-5.jpg" alt="Life is better with you all.">
         </div>
         <h4>Friends</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/ivy-partner-1.jpg" alt="My kind of happiness."></div>
+        <div class="ph"><img src="./ivy-partner-1.jpg" alt="My kind of happiness."></div>
         <div class="more-imgs">
-          <img src="pictures3/ivy-partner-2.jpg" alt="Us, in our own little world..">
-          <img src="pictures3/ivy-partner-3.jpg" alt="A little piece of my heart.">
-          <img src="pictures3/ivy-partner-4.jpg" alt="You make even the simplest moments feel worth remembering.">
-          <img src="pictures3/ivy-partner-5.jpg" alt="No matter where life takes us, I hope we keep choosing each other.">
+          <img src="./ivy-partner-2.jpg" alt="Us, in our own little world..">
+          <img src="./ivy-partner-3.jpg" alt="A little piece of my heart.">
+          <img src="./ivy-partner-4.jpg" alt="You make even the simplest moments feel worth remembering.">
+          <img src="./ivy-partner-5.jpg" alt="No matter where life takes us, I hope we keep choosing each other.">
         </div>
         <h4>Partner</h4>
       </div>
@@ -843,34 +843,34 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3 class="fname">Jhon Patrick Darauay</h3>
     <div class="frow">
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/patrick-fam-1.jpg" alt="Family first, always and forever."></div>
+        <div class="ph"><img src="./patrick-fam-1.jpg" alt="Family first, always and forever."></div>
         <div class="more-imgs">
-          <img src="pictures3/patrick-fam-2.jpg" alt="My home, my strength, my family.">
-          <img src="pictures3/patrick-fam-3.jpg" alt="Together through every season of life.">
-          <img src="pictures3/patrick-fam-4.jpg" alt="Palipas oras para makalimot sa masakit na kahapon"
+          <img src="./patrick-fam-2.jpg" alt="My home, my strength, my family.">
+          <img src="./patrick-fam-3.jpg" alt="Together through every season of life.">
+          <img src="./patrick-fam-4.jpg" alt="Palipas oras para makalimot sa masakit na kahapon"
 
-          <img src="pictures3/patrick-fam-5.jpg" alt="Cute kong pamangkin">
+          <img src="./patrick-fam-5.jpg" alt="Cute kong pamangkin">
         </div>
         <h4>Family</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/patrick-friend-1.jpg" alt="Boss D SAKALAM"></div>
+        <div class="ph"><img src="./patrick-friend-1.jpg" alt="Boss D SAKALAM"></div>
         <div class="more-imgs">
-          <img src="pictures3/patrick-friend-2.jpg" alt="Eatwell mga pre">
-          <img src="pictures3/patrick-friend-3.jpg" alt="wait, ano 'to?">
-          <img src="pictures3/patrick-friend-4.jpg" alt="Date with friends">
-          <img src="pictures3/patrick-friend-5.jpg" alt="Different paths, one bond, and countless memories that will last a lifetime.">
-          <img src="pictures3/patrick-friend-6.jpg" alt="Good friends turn ordinary moments into unforgettable memories.">
+          <img src="./patrick-friend-2.jpg" alt="Eatwell mga pre">
+          <img src="./patrick-friend-3.jpg" alt="wait, ano 'to?">
+          <img src="./patrick-friend-4.jpg" alt="Date with friends">
+          <img src="./patrick-friend-5.jpg" alt="Different paths, one bond, and countless memories that will last a lifetime.">
+          <img src="./patrick-friend-6.jpg" alt="Good friends turn ordinary moments into unforgettable memories.">
         </div>
         <h4>Friends</h4>
       </div>
         <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/patrick-partner-1.jpg" alt="Fueled by passion, driven by dreams."></div>
+        <div class="ph"><img src="./patrick-partner-1.jpg" alt="Fueled by passion, driven by dreams."></div>
         <div class="more-imgs">
-          <img src="pictures3/patrick-partner-2.jpg" alt="Speed is my obsession.">
-          <img src="pictures3/patrick-partner-3.jpg" alt="Four or two wheels, endless freedom.">
-          <img src="pictures3/patrick-partner-4.jpg" alt="Life is too short to drive boring cars and live ordinary stories.">
-          <img src="pictures3/patrick-partner-5.jpg" alt="Four wheels, endless roads, and a thousand dreams waiting to be chased">
+          <img src="./patrick-partner-2.jpg" alt="Speed is my obsession.">
+          <img src="./patrick-partner-3.jpg" alt="Four or two wheels, endless freedom.">
+          <img src="./patrick-partner-4.jpg" alt="Life is too short to drive boring cars and live ordinary stories.">
+          <img src="./patrick-partner-5.jpg" alt="Four wheels, endless roads, and a thousand dreams waiting to be chased">
         </div>
         <h4>Partner</h4>
     </div>
@@ -882,32 +882,32 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     <h3 class="fname">Lloyd Anderson Catahumber</h3>
     <div class="frow">
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/lloyd-fam-1.jpg" alt="My Beloved Mother and Young Me"></div>
+        <div class="ph"><img src="./lloyd-fam-1.jpg" alt="My Beloved Mother and Young Me"></div>
         <div class="more-imgs">
-          <img src="pictures3/lloyd-fam-2.jpg" alt="My Beautiful and Kind Sister">
-          <img src="pictures3/lloyd-fam-3.jpg" alt="My Beautiful and Kind Sister">
-          <img src="pictures3/lloyd-fam-4.jpg" alt="Family at the acquaintance party">
-          <img src="pictures3/lloyd-fam-5.jpg" alt="Moments with My son">
+          <img src="./lloyd-fam-2.jpg" alt="My Beautiful and Kind Sister">
+          <img src="./lloyd-fam-3.jpg" alt="My Beautiful and Kind Sister">
+          <img src="./lloyd-fam-4.jpg" alt="Family at the acquaintance party">
+          <img src="./lloyd-fam-5.jpg" alt="Moments with My son">
         </div>
         <h4>Family</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/lloyd-friend-1.jpg" alt="True friends always says tagay!"></div>
+        <div class="ph"><img src="./lloyd-friend-1.jpg" alt="True friends always says tagay!"></div>
         <div class="more-imgs">
-          <img src="pictures3/lloyd-friend-2.jpg" alt="Tropa kong maloko pero di magpapaloko">
-          <img src="pictures3/lloyd-friend-3.jpg" alt="Tropa kong kahit sa CR nag a-update">
-          <img src="pictures3/lloyd-friend-4.jpg" alt="Soju nata">
-          <img src="pictures3/lloyd-friend-5.jpg" alt="Bonding with friends">
+          <img src="./lloyd-friend-2.jpg" alt="Tropa kong maloko pero di magpapaloko">
+          <img src="./lloyd-friend-3.jpg" alt="Tropa kong kahit sa CR nag a-update">
+          <img src="./lloyd-friend-4.jpg" alt="Soju nata">
+          <img src="./lloyd-friend-5.jpg" alt="Bonding with friends">
         </div>
         <h4>Friends</h4>
       </div>
       <div class="fcard gal-group">
-        <div class="ph"><img src="pictures3/lloyd-partner-1.jpg" alt="Ito partner ko sa buhay, walang kahit sinong babae makakatalo dito, isang case lang masaya na ko"></div>
+        <div class="ph"><img src="./lloyd-partner-1.jpg" alt="Ito partner ko sa buhay, walang kahit sinong babae makakatalo dito, isang case lang masaya na ko"></div>
         <div class="more-imgs">
-          <img src="pictures3/lloyd-partner-2.jpg" alt="My Number 1">
-          <img src="pictures3/lloyd-partner-3.jpg" alt="Bestfriend ni Number 1">
-          <img src="pictures3/lloyd-partner-4.jpg" alt="different paths, one precious blessing">
-          <img src="pictures3/lloyd-partner-5.jpg" alt="The best part comes">
+          <img src="./lloyd-partner-2.jpg" alt="My Number 1">
+          <img src="./lloyd-partner-3.jpg" alt="Bestfriend ni Number 1">
+          <img src="./lloyd-partner-4.jpg" alt="different paths, one precious blessing">
+          <img src="./lloyd-partner-5.jpg" alt="The best part comes">
         </div>
         <h4>Partner</h4>
       </div>
@@ -924,9 +924,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   <div class="cen">
 
  <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/dea-elysium-1.jpg" alt="ELYSIUM"></div>
+      <div class="ph"><img src="./dea-elysium-1.jpg" alt="ELYSIUM"></div>
       <div class="more-imgs">
-        <img src="pictures5/dea-elysium-2.jpg" alt="ELYSIUM">
+        <img src="./dea-elysium-2.jpg" alt="ELYSIUM">
      
       </div>
       <div class="pbody">
@@ -937,9 +937,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
     <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/dea-bag-1.jpg" alt="ZAVRÉNE"></div>
+      <div class="ph"><img src="./dea-bag-1.jpg" alt="ZAVRÉNE"></div>
       <div class="more-imgs">
-        <img src="pictures5/dea-bag-2.jpg" alt="ZAVRÉNE">
+        <img src="./dea-bag-2.jpg" alt="ZAVRÉNE">
      
       </div>
       <div class="pbody">
@@ -950,9 +950,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
     <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/dea-laiwan-1.jpg" alt="LAIWAN NOEN"></div>
+      <div class="ph"><img src="./dea-laiwan-1.jpg" alt="LAIWAN NOEN"></div>
       <div class="more-imgs">
-        <img src="pictures5/dea-laiwan-2.jpg" alt="LAIWAN NOEN PARFUM">
+        <img src="./dea-laiwan-2.jpg" alt="LAIWAN NOEN PARFUM">
        
       </div>
       <div class="pbody">
@@ -963,10 +963,10 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
 <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/lloyd-car-1.jpg" alt="AURELIS"></div>
+      <div class="ph"><img src="./lloyd-car-1.jpg" alt="AURELIS"></div>
       <div class="more-imgs">
-        <img src="pictures5/lloyd-car-2.jpg" alt="AURELIS">
-        <img src="pictures5/lloyd-car-3.jpg" alt="AURELIS">
+        <img src="./lloyd-car-2.jpg" alt="AURELIS">
+        <img src="./lloyd-car-3.jpg" alt="AURELIS">
       </div>
 
       <div class="pbody">
@@ -977,9 +977,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
     <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/ivy-aurae-1.jpg" alt="AURAE"></div>
+      <div class="ph"><img src="./ivy-aurae-1.jpg" alt="AURAE"></div>
       <div class="more-imgs">
-        <img src="pictures5/ivy-aurae-2.jpg" alt="AURAE">
+        <img src="./ivy-aurae-2.jpg" alt="AURAE">
      
       </div>
       <div class="pbody">
@@ -990,9 +990,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
  <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/ivy-velora-1.jpg" alt="AURAE"></div>
+      <div class="ph"><img src="./ivy-velora-1.jpg" alt="AURAE"></div>
       <div class="more-imgs">
-        <img src="pictures5/ivy-velora-2.jpg" alt="AURAE">
+        <img src="./ivy-velora-2.jpg" alt="AURAE">
      
       </div>
       <div class="pbody">
@@ -1003,9 +1003,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
  <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/cherry-candle-1.jpg" alt="MIDNIGHT BLOWOM CANDLE"></div>
+      <div class="ph"><img src="./cherry-candle-1.jpg" alt="MIDNIGHT BLOWOM CANDLE"></div>
       <div class="more-imgs">
-        <img src="pictures5/cherry-candle-2.jpg" alt="MIDNIGHT BLOWOM CANDLE">
+        <img src="./cherry-candle-2.jpg" alt="MIDNIGHT BLOWOM CANDLE">
      
       </div>
       <div class="pbody">
@@ -1017,9 +1017,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
     
  <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/patrick-coke-1.jpg" alt="COCA-COLA"></div>
+      <div class="ph"><img src="./patrick-coke-1.jpg" alt="COCA-COLA"></div>
       <div class="more-imgs">
-        <img src="pictures5/patrick-coke-2.jpg" alt="COCA-COLA">
+        <img src="./patrick-coke-2.jpg" alt="COCA-COLA">
      
       </div>
       <div class="pbody">
@@ -1030,9 +1030,9 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
     </div>
 
      <div class="prod glass rv gal-group">
-      <div class="ph"><img src="pictures5/cherry-mccafe-1.jpg" alt="MC CAFE"></div>
+      <div class="ph"><img src="./cherry-mccafe-1.jpg" alt="MC CAFE"></div>
       <div class="more-imgs">
-        <img src="pictures5/cherry-mccafe-2.jpg" alt="MC CAFE">
+        <img src="./cherry-mccafe-2.jpg" alt="MC CAFE">
      
       </div>
       <div class="pbody">
@@ -1087,7 +1087,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   <div class="foot">
     <div class="brand">
      
-      <div class="logo"><img src="pictures/um-logo.jpg" alt="UM LOGO"></div>
+      <div class="logo"><img src="./um-logo.jpg" alt="UM LOGO"></div>
     </div>
     <div>
       <h4>ADDRESS</h4>
@@ -1135,7 +1135,7 @@ function onScroll(){
   $('#bar').style.width=(h>0?y/h*100:0)+'%';
   $('#top').classList.toggle('show',y>600);
   let cur='home';
-  ids.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<innerHeight*0.4) cur=id;});
+  ids.forEach(id=>{const el=document.getElementById(id); if(el && el.getBoundingClientRect().top<innerHeight*0.) cur=id;});
   if(innerHeight+y>=document.documentElement.scrollHeight-4) cur='contact';
   $$('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.target===cur));
 }
