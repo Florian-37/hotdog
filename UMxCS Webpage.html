@@ -25,7 +25,7 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--red),var(--gold),
 /* ---------- BLURRED UNIVERSITY BACKGROUND (fixed behind everything) ---------- */
 .bg{position:fixed;inset:-40px;z-index:-2;
   /* REPLACE: um-campus.jpg = your university photo. If missing, the gradients below show. */
-  background:url('um-campus.jpg') center/cover,radial-gradient(55% 45% at 12% 12%,#e0303c77,transparent),radial-gradient(50% 40% at 92% 28%,#ffd60a44,transparent),radial-gradient(60% 50% at 80% 88%,#1fd66b99,transparent),radial-gradient(55% 45% at 8% 62%,#1fd66b77,transparent),radial-gradient(45% 35% at 50% 40%,#1fd66b33,transparent),#050505;
+  background:url('./um-campus.jpg') center/cover,radial-gradient(55% 45% at 12% 12%,#e0303c77,transparent),radial-gradient(50% 40% at 92% 28%,#ffd60a44,transparent),radial-gradient(60% 50% at 80% 88%,#1fd66b99,transparent),radial-gradient(55% 45% at 8% 62%,#1fd66b77,transparent),radial-gradient(45% 35% at 50% 40%,#1fd66b33,transparent),#050505;
   filter:blur(14px) saturate(1.2);transform:scale(1.05)}
 .shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,#00000066,#000000b3 60%,#000000dd)}
 /* floating glow orbs = life */
@@ -70,7 +70,7 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 @media(max-width:999px){header{padding:0 12px}}
 .head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 30px}
 .head h1{flex:1;min-width:0;white-space:nowrap;text-align:center;font-size:clamp(1.1rem,2.7vw,2.7rem);font-weight:800;letter-spacing:.06em;line-height:1.15}
-.head h1 span{display:block;font-size:.em;font-weight:600;letter-spacing:.2em;margin-top:5px;background:linear-gradient(90deg,var(--red),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.head h1 span{display:block;font-size:.em;font-weight:600;letter-spacing:.em;margin-top:5px;background:linear-gradient(90deg,var(--red),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
 .logo{width:130px;height:130px;flex:none;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.68rem;color:var(--mut);border:2px dashed var(--line);background:var(--glass)}
 .logo img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 
@@ -79,7 +79,7 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 /* ---------- 2. NAVIGATION (floating glass pill, sticky) ---------- */
 .nav{position:sticky;top:12px;z-index:50;width:fit-content;max-width:calc(100% - 24px);margin:14px auto 0}
 .nav ul{list-style:none;display:flex;gap:4px;padding:6px;overflow-x:auto;scrollbar-width:none}
-.nav a{display:block;padding:11px 22px;border-radius:50px;color:var(--mut);text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:.08em;white-space:nowrap;transition:.25s;cursor:pointer}
+.nav a{display:block;padding:11px 22px;border-radius:50px;color:var(--mut);text-decoration:none;font-weight:600;font-size:.8rem;letter-spacing:.08em;white-space:nowrap;transition:.5s;cursor:pointer}
 .nav a:hover{color:#fff;background:var(--glass2)}
 .nav a.on{color:#052418;background:linear-gradient(90deg,var(--gold),var(--green));box-shadow:0 6px 22px #1fd66b55}
 .bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:99;background:linear-gradient(90deg,var(--red),var(--gold),var(--green))}
@@ -92,7 +92,7 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 .w{display:inline-block;opacity:0;transform:translateY(24px);animation:up .7s forwards}
 @keyframes up{to{opacity:1;transform:none}}
 #home p{color:var(--mut);font-size:1.1rem;margin:22px auto 34px;max-width:560px}
-.btn{display:inline-block;padding:15px 34px;margin:5px;border-radius:50px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;transition:.25s;color:#052418;background:linear-gradient(90deg,var(--gold),var(--green))}
+.btn{display:inline-block;padding:15px 34px;margin:5px;border-radius:50px;font-weight:600;font-size:.92rem;text-decoration:none;cursor:pointer;transition:.5s;color:#052418;background:linear-gradient(90deg,var(--gold),var(--green))}
 .btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px #1fd66b55}
 .btn.o{background:var(--glass);color:#fff;border:1px solid var(--line)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:-20px}
@@ -100,7 +100,7 @@ header{max-width:none;margin:18px 0 0;padding:0 24px}
 .stats b{display:block;font-family:Sora,sans-serif;font-size:2.rem;line-height:1.1;background:linear-gradient(90deg,var(--red),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
 .stats span{color:var(--mut);font-size:.85rem}
 
-#home p.ideals{font-family:Sora,sans-serif;font-weight:600;letter-spacing:.2em;color:var(--gold);font-size:1rem;margin:26px auto 0;max-width:none}
+#home p.ideals{font-family:Sora,sans-serif;font-weight:600;letter-spacing:.em;color:var(--gold);font-size:1rem;margin:26px auto 0;max-width:none}
 /* balanced rows: cards always centered (3 on top, the rest centered below) */
 .cen{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
 .cen>*{flex:0 1 calc(33.33% - 15px);min-width:230px}
@@ -196,7 +196,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 .foot .brand{text-align:center;align-self:center}
 .foot .logo{width:150px;height:150px;margin:0 auto}
 .foot .brand b{display:block;font:800 1.15rem Sora,sans-serif;color:#fff;letter-spacing:.04em}
-.foot h4{font:800 .85rem Sora,sans-serif;letter-spacing:.2em;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.foot h4{font:800 .85rem Sora,sans-serif;letter-spacing:.em;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .foot p{margin-bottom:6px;text-align:left}
 .foot .two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .foot a{color:var(--green);text-decoration:none;font-weight:600}
@@ -210,7 +210,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
 @media(max-width:800px){
   .split{grid-template-columns:1fr}
-  .head{flex-wrap:wrap;justify-content:center}.head h1{order:-1;flex:none;width:100%;font-size:clamp(1rem,4.2vw,2.2rem)}.logo{width:84px;height:84px}.mv{flex-direction:column}.mv .ph{width:100%!important;height:170px;border-right:0!important;border-bottom:2px dashed var(--line)!important}
+  .head{flex-wrap:wrap;justify-content:center}.head h1{order:-1;flex:none;width:100%;font-size:clamp(1rem,4.vw,2.rem)}.logo{width:84px;height:84px}.mv{flex-direction:column}.mv .ph{width:100%!important;height:170px;border-right:0!important;border-bottom:2px dashed var(--line)!important}
   .wrap{padding:70px 18px}.foot{grid-template-columns:1fr;gap:24px;padding:28px 7vw}.foot .two{grid-template-columns:1fr;gap:0}.pc{flex-direction:column;text-align:center;min-width:0}.pt h3{text-align:center}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.w{opacity:1;transform:none}.js .rv{opacity:1;transform:none}html{scroll-behavior:auto}}
@@ -284,7 +284,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
   padding: 10px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.);
 }
 
@@ -407,7 +407,7 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
   <!-- .  -->
   <div class="rv">
-    <div class="ph" style="height:320px"><img src=".2/um-gym-building.jpg" alt="UM Building"></div>
+    <div class="ph" style="height:320px"><img src="./um-gym-building.jpg" alt="UM Building"></div>
     <div class="gal">
       <div class="ph"><img src="./um-programs-students.jpg" alt="University Of Manila Programs"></div>
       <div class="ph"><img src="./um-stage.jpg" alt="UM Stage"></div>
@@ -538,18 +538,18 @@ footer{margin-top:40px;background:rgba(0,0,0,.88);backdrop-filter:blur(18px);-we
 
   
   <div class="cen" id="newsGrid">
-    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span><div class="ph"><img src=".2/mr-um-3rdplace-2026.jpg" alt="MR UNIVERSITY OF MANILA 2ND 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span></div></div>
-        <div class="n glass hl rv"><span class="yr">MODERN DANCE CHAMPION 2026</span><div class="ph"><img src=".2/cs-modern-dance-2026-champion.jpg" alt="MODERN DANCE CHAMPION 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA 3RD PLACE 2026</span><div class="ph"><img src=".2/cs-3rdplace-buwan-ng-wika.jpg" alt="BUWAN NG WIKA 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA FESTIVAL 3RD PLACE 2026</span><div class="ph"><img src=".2/3rd-place-buwan-ng-wika-festival-2026.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA FESTIVAL 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">1ST PLACE IN CHEEREDANCE 2026</span><div class="ph"><img src=".2/1st-place-cheerdance-2026.jpg" alt="CS 1st PLACE in CHEERDANCE  2026"/></b></div><div class="t"><span class="tag g">1ST PLACE IN CHEEREDANCE 2026 </span></div></div>
-        <div class="n glass hl rv"><span class="yr">MR INTRAMURALS 2026</span><div class="ph"><img src=".2/mr-intramurals-2026.jpg" alt="MR INTRAMURALS 2026"/></b></div><div class="t"><span class="tag">MR INTRAMS</span></div></div> 
-    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2026</span><div class="ph"><img src=".2/cs-best-in-jersey-2026.jpg" alt="BEST IN JERSEY 2026"/></b></div><div class="t"><span class="tag g">BEST IN JERSEY 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA WINNER 2025</span><div class="ph"><img src=".2/awarding-mr.um.jpg" alt="MR UNIVERSITY OF MANILA 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA WINNER 2026</span></div></div>
-    <div class="n glass hl rv"><span class="yr">MISS & MR INTRAMURALS 2025</span><div class="ph"><img src=".2/cs-miss-intrams-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">MISS INTRAMS</span></div></div> 
-    <div class="n glass hl rv"><span class="yr">BEST IN COSTUME 2025</span><div class="ph"><img src=".2/cs-trophy-cheerdance.jpg" alt="CS BEST IN COSTUME 2025"/>5</b></div><div class="t"><span class="tag">COMSCIE WON BEST IN COSTUME CHEERDANCE 2025</span></div></div>
-    <div class="n glass hl rv"><span class="yr">CHEERDANCE CHAMPION 2025</span><div class="ph"><img src=".2/cs-champion-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></svg><b class="nm">COMSCIE CHAMPION CHEERDANCE 2025</b></div><div class="t"><span class="tag g">BEST IN COSTUME</span></div></div>
-    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2025</span><div class="ph"><img src=".2/cs-best-in-jersey-2025.jpg" alt="CS BEST IN JERSEY 2025"/></b></div><div class="t"><span class="tag">BEST IN JERSEY 2025</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span><div class="ph"><img src="./mr-um-3rdplace-2026.jpg" alt="MR UNIVERSITY OF MANILA 2ND 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA 2ND PLACE 2026</span></div></div>
+        <div class="n glass hl rv"><span class="yr">MODERN DANCE CHAMPION 2026</span><div class="ph"><img src="./cs-modern-dance-2026-champion.jpg" alt="MODERN DANCE CHAMPION 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA 3RD PLACE 2026</span><div class="ph"><img src="./cs-3rdplace-buwan-ng-wika.jpg" alt="BUWAN NG WIKA 2026"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BUWAN NG WIKA FESTIVAL 3RD PLACE 2026</span><div class="ph"><img src="./3rd-place-buwan-ng-wika-festival-2026.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">3RD PLACE BUWAN NG WIKA FESTIVAL 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">1ST PLACE IN CHEEREDANCE 2026</span><div class="ph"><img src="./1st-place-cheerdance-2026.jpg" alt="CS 1st PLACE in CHEERDANCE  2026"/></b></div><div class="t"><span class="tag g">1ST PLACE IN CHEEREDANCE 2026 </span></div></div>
+        <div class="n glass hl rv"><span class="yr">MR INTRAMURALS 2026</span><div class="ph"><img src="./mr-intramurals-2026.jpg" alt="MR INTRAMURALS 2026"/></b></div><div class="t"><span class="tag">MR INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2026</span><div class="ph"><img src="./cs-best-in-jersey-2026.jpg" alt="BEST IN JERSEY 2026"/></b></div><div class="t"><span class="tag g">BEST IN JERSEY 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MR UNIVERSITY OF MANILA WINNER 2025</span><div class="ph"><img src="./awarding-mr.um.jpg" alt="MR UNIVERSITY OF MANILA 2026"/></b></div><div class="t"><span class="tag">MR UNIVERSITY OF MANILA WINNER 2026</span></div></div>
+    <div class="n glass hl rv"><span class="yr">MISS & MR INTRAMURALS 2025</span><div class="ph"><img src="./cs-miss-intrams-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></b></div><div class="t"><span class="tag">MISS INTRAMS</span></div></div> 
+    <div class="n glass hl rv"><span class="yr">BEST IN COSTUME 2025</span><div class="ph"><img src="./cs-trophy-cheerdance.jpg" alt="CS BEST IN COSTUME 2025"/>5</b></div><div class="t"><span class="tag">COMSCIE WON BEST IN COSTUME CHEERDANCE 2025</span></div></div>
+    <div class="n glass hl rv"><span class="yr">CHEERDANCE CHAMPION 2025</span><div class="ph"><img src="./cs-champion-2025.jpg" alt="CS CHEERDANCE CHAMPION 2025"/></svg><b class="nm">COMSCIE CHAMPION CHEERDANCE 2025</b></div><div class="t"><span class="tag g">BEST IN COSTUME</span></div></div>
+    <div class="n glass hl rv"><span class="yr">BEST IN JERSEY 2025</span><div class="ph"><img src="./cs-best-in-jersey-2025.jpg" alt="CS BEST IN JERSEY 2025"/></b></div><div class="t"><span class="tag">BEST IN JERSEY 2025</span></div></div>
   </div>
 
     <!-- UM EVENTS -->
